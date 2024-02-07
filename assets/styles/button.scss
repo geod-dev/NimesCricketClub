@@ -1,0 +1,17 @@
+@layer base {
+	.button {
+		@apply py-2.5 px-5 text-center text-background rounded font-medium transition-colors shrink-0;
+		&.button-icon {
+			@apply p-2.5;
+		}
+	}
+	.button-primary {
+		@apply button bg-primary hover:bg-primary-600;
+	}
+	.button-secondary {
+		@apply button bg-secondary hover:bg-secondary-600;
+	}
+	.button-gray {
+		@apply button bg-default-600 hover:bg-default-500;
+	}
+}

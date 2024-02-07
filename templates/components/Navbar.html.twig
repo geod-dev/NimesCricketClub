@@ -1,0 +1,55 @@
+{% set links = {
+    "app_home": "Accueil",
+    "app_news": "Actus",
+    "app_player": "L'Equipe",
+    "app_activity": "Nos Activités",
+    "app_about": "A Propos"
+} %}
+
+<div {{ attributes }}>
+    <div class="h-20 w-screen"></div>
+    <div class="box fixed top-0 left-0 w-screen h-20 py-2 shadow-lg bg-background flex-between z-50 navbar">
+        <div class="lg:order-2 z-10">
+            <button type="button" class="lg:hidden menu-open h-12 w-12">
+                <span class="block h-5 w-5">
+                    {{ source('bars.svg') }}
+                </span>
+            </button>
+            <div class="left-0 top-0 fixed w-screen h-screen bg-black bg-opacity-50 hidden lg:hidden menu-close"></div>
+            <div class="left-0 top-0 fixed lg:static h-screen w-60 lg:w-auto lg:h-auto bg-background flex-start py-5 px-8 gap-3 flex-col lg:flex-row menu -translate-x-full lg:translate-x-0 transition-transform">
+                <div class="lg:hidden w-full px-6">
+                    <img src="{{ asset('logo-large.jpg') }}" alt="Logo du NCC"
+                         class="w-full lg:order-1 pb-5 mb-2 border-b border-foreground-extralight">
+                </div>
+
+                {% for route, name in links %}
+                    {% set active = app.request.attributes.get('_route') starts with route %}
+                    <a href="{{ path(route) }}"
+                       class="{{ active ? "bg-background-darker text-foreground font-semibold" : "hover:bg-background-dark text-foreground-light font-medium" }} hover:text-foreground rounded px-3 py-2 w-full lg:w-auto shrink-0">
+                        {{ name }}
+                    </a>
+                {% endfor %}
+                <a class="button-primary w-full lg:hidden" href="#">Nous Rejoindre</a>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="button-gray w-full lg:hidden" href="{{ path('app_admin') }}">Admin</a>
+                {% endif %}
+            </div>
+        </div>
+        <a class="left-0 absolute w-full flex-center gap-3 lg:static lg:w-auto z-0" href="{{ path('app_home') }}">
+            <img src="{{ asset('logo.png') }}" alt="Logo du NCC" class="h-12 -mt-0.5">
+            <p class="font-bold text-xl hidden xl:block">Nîmes Cricket Club</p>
+        </a>
+        <div class="order-3 hidden lg:block">
+            <div class="flex-center gap-2">
+                <a class="button-primary" href="#">Nous Rejoindre</a>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="button-gray button-icon" href="{{ path('app_admin') }}">
+                        <span class="block h-5 w-5">
+                            {{ source('gear.svg') }}
+                        </span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

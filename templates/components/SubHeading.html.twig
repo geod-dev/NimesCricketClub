@@ -1,0 +1,9 @@
+<div{{ attributes }}>
+    {% if size == 1 %}
+        <h2 class="text-xl text-primary-900 font-bold mb-4">{{ title }}</h2>
+    {% elseif size == 2 %}
+        <h2 class="text-3xl text-primary-900 font-bold mb-4">{{ title }}</h2>
+    {% else %}
+        <h2 class="text-5xl text-primary-900 font-bold mb-4">{{ title }}</h2>
+    {% endif %}
+</div>

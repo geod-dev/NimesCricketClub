@@ -1,0 +1,15 @@
+.flex-start {
+	@apply flex items-center;
+}
+
+.flex-center {
+	@apply flex-start justify-center;
+}
+
+.flex-between {
+	@apply flex-start justify-between;
+}
+
+.flex-around {
+	@apply flex-start justify-around;
+}

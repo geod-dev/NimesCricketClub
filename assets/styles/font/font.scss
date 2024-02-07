@@ -1,0 +1,17 @@
+@font-face {
+	font-family: "Urbanist";
+	src: url("Urbanist-VariableFont_wght.ttf");
+}
+
+@font-face {
+	font-family: "Nunito";
+	src: url("Nunito-VariableFont_wght.ttf");
+}
+
+* {
+	font-family: "Nunito", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Urbanist", "Nunito", sans-serif;
+}

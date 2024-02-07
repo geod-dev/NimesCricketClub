@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="home">
+        <div class="box relative w-screen flex flex-col bg-cover text-background"
+             style="background-position: 50% 70%; background-image: url('{{ asset('images/home.jpg') }}')">
+            <span class="absolute top-0 left-0 bg-black bg-opacity-50 w-screen h-full z-0"></span>
+            <div class="z-10 py-20">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">Découvrez le <br> Nîmes Cricket Club !</h1>
+                <a class="button-secondary shadow" href="{{ path('app_discover') }}">C'est quoi le Cricket ?</a>
+            </div>
+            <small class="absolute bottom-0 right-0 text-background z-10 mb-1 mr-5">
+                Photo
+                <a target="_blank" class="underline" href="https://www.transit-photo.com/photographes/david-richard/">
+                    David Richard
+                </a>
+            </small>
+        </div>
+
+        <div class="box bg-background-darker">
+            <p class="text-foreground-light text-justify font-medium text-lg">
+                Avec un projet à la fois sportif et social, le <b class="text-foreground">Nîmes Cricket Club</b>
+                developpe la pratique du cricket auprès de tous les publics.
+            </p>
+        </div>
+
+        <div class="box space-y-8">
+            <twig:SubHeading title="Nos Activités" />
+            <twig:Activities />
+        </div>
+
+        <div class="marquee">
+            <div>
+                {% for partner in partners %}
+                    <a href="{{ partner.link }}" target="_blank">
+                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}" src="{{ asset(partner.imagePath) }}"/>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div>
+                {% for partner in partners %}
+                    <a href="{{ partner.link }}"  target="_blank">
+                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}" src="{{ asset(partner.imagePath) }}"/>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
