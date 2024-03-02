@@ -1,6 +1,4 @@
 parameters:
-    admin.email: "%env(ADMIN_EMAIL)%"
-    admin.password: "%env(ADMIN_PASSWORD)%"
 
 services:
     _defaults:
@@ -13,7 +11,3 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
-    App\Command\MakeAdminUserCommand:
-        $adminEmail: '%admin.email%'
-        $adminPassword: '%admin.password%'
