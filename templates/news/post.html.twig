@@ -11,7 +11,7 @@
                     <h1 class="text-5xl md:text-6xl font-bold">{{ post.title }}</h1>
                 </div>
             </div>
-            <img zoomable class="rounded w-full aspect-video object-cover object-top" src="{{ asset(post.imagePath) }}" alt="">
+            <img zoomable class="rounded w-full aspect-video object-cover object-top" src="{{ asset(post.imagePath)|imagine_filter("full") }}" alt="">
             <div class="post-content my-8">
                 {{ post.content|raw }}
             </div>

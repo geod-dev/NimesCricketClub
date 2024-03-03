@@ -13,12 +13,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
             <div class="max-md:space-y-3">
                 <twig:SubHeading size="3" title="{{ activity.name }}" />
-                <img class="w-full rounded md:hidden" src="{{ asset(activity.imagePath) }}" alt="{{ activity.name }}">
+                <img class="w-full rounded md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.name }}">
                 <div>
                     {{ activity.content|raw }}
                 </div>
             </div>
-            <img class="w-full rounded max-md:hidden" src="{{ asset(activity.imagePath) }}" alt="{{ activity.name }}">
+            <img class="w-full rounded max-md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.name }}" zoomable>
         </div>
     </div>
 {% endblock %}

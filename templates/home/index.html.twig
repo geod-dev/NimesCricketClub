@@ -35,7 +35,8 @@
             <div>
                 {% for partner in partners %}
                     <a href="{{ partner.link }}" target="_blank">
-                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}" src="{{ asset(partner.imagePath) }}"/>
+                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}"
+                             src="{{ asset(partner.imagePath)|imagine_filter("partner") }}"/>
                     </a>
                 {% endfor %}
             </div>
@@ -43,7 +44,8 @@
             <div>
                 {% for partner in partners %}
                     <a href="{{ partner.link }}"  target="_blank">
-                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}" src="{{ asset(partner.imagePath) }}"/>
+                        <img class="{{ partner.round ? "circle" }}" alt="{{ partner.name }}"
+                             src="{{ asset(partner.imagePath)|imagine_filter("partner") }}"/>
                     </a>
                 {% endfor %}
             </div>
