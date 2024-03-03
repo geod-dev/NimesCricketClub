@@ -3,17 +3,17 @@
 namespace App\Entity;
 
 use App\Entity\Trait\ImageTrait;
+use App\Entity\Trait\TimestampTrait;
 use App\Repository\NewsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
-use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
 #[ORM\Entity(repositoryClass: NewsRepository::class)]
-class News implements TimestampableInterface
+#[ORM\HasLifecycleCallbacks]
+class News
 {
     use ImageTrait;
-    use TimestampableTrait;
+    use TimestampTrait;
 
     const UPLOAD_PATH = "uploads/news";
 

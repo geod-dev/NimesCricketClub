@@ -13,7 +13,7 @@ class NewsController extends AbstractController
     #[Route('/actus', name: 'app_news')]
     public function index(NewsRepository $repository): Response
     {
-        return $this->render('blog/index.html.twig', [
+        return $this->render('news/index.html.twig', [
             'news' => $repository->findBy([], ['createdAt' => 'DESC']),
         ]);
     }
@@ -21,7 +21,7 @@ class NewsController extends AbstractController
     #[Route('/actus/{slug}', name: 'app_news_post')]
     public function news(News $post): Response
     {
-        return $this->render('blog/post.html.twig', [
+        return $this->render('news/post.html.twig', [
             'post' => $post,
         ]);
     }

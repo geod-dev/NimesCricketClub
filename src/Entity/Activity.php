@@ -3,16 +3,17 @@
 namespace App\Entity;
 
 use App\Entity\Trait\ImageTrait;
+use App\Entity\Trait\TimestampTrait;
 use App\Repository\ActivityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
 #[ORM\Entity(repositoryClass: ActivityRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Activity
 {
     use ImageTrait;
-    use TimestampableTrait;
+    use TimestampTrait;
 
     const UPLOAD_PATH = "uploads/activity";
 
