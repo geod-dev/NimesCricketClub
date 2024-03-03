@@ -1,0 +1,24 @@
+{# Default Metas #}
+
+<meta charset="UTF-8">
+<meta name="viewport"
+	  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="fr_FR"/>
+
+{# Variables #}
+
+{% if title is defined and title is not empty %}
+	<meta property="title" content="{{ block('title') }} - Nîmes Cricket Club"/>
+{% endif %}
+
+{% if description is defined and description is not empty %}
+	<meta property="description" content="{{ description }}"/>
+{% endif %}
+
+{% if noIndex is defined %}
+	<meta name="robots" content="noindex, nofollow"/>
+{% else %}
+	<meta name="robots" content="index, follow"/>
+{% endif %}

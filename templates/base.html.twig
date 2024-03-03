@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>{% block title %}Page{% endblock %} | NCC</title>
+        <title>{% block title %}Page{% endblock %} | Nîmes Cricket Club</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% include "_meta.html.twig" %}
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
