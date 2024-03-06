@@ -14,7 +14,7 @@
             <div class="max-md:space-y-3">
                 <twig:SubHeading size="3" title="{{ activity.name }}" />
                 <img class="w-full rounded md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.name }}">
-                <div>
+                <div class="post-content">
                     {{ activity.content|raw }}
                 </div>
             </div>
