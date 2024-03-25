@@ -1,11 +1,11 @@
-.input-box {
+.form-row {
 	@apply mb-5 w-full;
 
 	label {
 		@apply block mb-2 text-sm font-medium;
 	}
 
-	input {
+	input, textarea {
 		@apply px-3.5 py-2.5 rounded w-full bg-background-dark border border-foreground-extralight;
 		@apply placeholder-foreground-light text-foreground-light;
 		@apply transition-colors focus:text-foreground focus:border-primary;

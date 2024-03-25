@@ -1,4 +1,5 @@
 parameters:
+    attachments_path: "%kernel.project_dir%/data/attachments"
 
 services:
     _defaults:

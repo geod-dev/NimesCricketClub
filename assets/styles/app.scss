@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "button";
 @import "flex";
-@import "form";
 @import "font/font";
+
+@import "button";
+@import "form";
+@import "alert";
+
 @import "marquee";
 @import "post";
 

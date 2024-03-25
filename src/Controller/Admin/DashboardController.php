@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activity;
+use App\Entity\ContactSubmission;
 use App\Entity\News;
 use App\Entity\Partner;
 use App\Entity\Player;
@@ -38,6 +39,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Players', 'fa fa-baseball-bat-ball', Player::class);
         yield MenuItem::linkToCrud('Partners', 'fa fa-handshake', Partner::class);
         yield MenuItem::linkToCrud('Activities', 'fa fa-bolt-lightning', Activity::class);
+        yield MenuItem::linkToCrud('Contacts', 'fa fa-users', ContactSubmission::class);
     }
 
     public function configureAssets(): Assets

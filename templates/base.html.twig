@@ -16,10 +16,25 @@
         {% endblock %}
     </head>
     <body class="w-screen min-h-screen flex flex-col overflow-x-hidden bg-background text-foreground text-base">
-            <twig:Navbar />
-            <main class="flex-1">
-                {% block body %}{% endblock %}
-            </main>
-            <twig:Footer />
+        <twig:Navbar />
+
+        <main class="flex-1">
+            {% block body "" %}
+        </main>
+
+        <div class="fixed z-30 right-0 bottom-0 w-96 flex flex-col gap-8 m-8">
+            {% for message in app.flashes('success') %}
+                <div class="alert-primary" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert-secondary" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <twig:Footer />
     </body>
 </html>

@@ -1,0 +1,27 @@
+@layer components {
+	.alert {
+		@apply text-foreground shadow-lg flex-center py-5 rounded font-semibold;
+		animation: alert 1s 5s linear forwards;
+
+		@keyframes alert {
+			from {
+				opacity: 100%
+			}
+			99% {
+				display: initial;
+			}
+			to {
+				opacity: 0;
+				display: none;
+			}
+		}
+	}
+
+	.alert-primary {
+		@apply alert bg-primary-200 border border-primary;
+	}
+
+	.alert-secondary {
+		@apply alert bg-secondary-200 border border-secondary;
+	}
+}
