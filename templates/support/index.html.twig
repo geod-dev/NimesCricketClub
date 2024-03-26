@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accompagnez le Projet{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<twig:Heading title="Accompagnez le Projet !"/>
+		<div class="space-y-6">
+			<p class="text-lg font-bold">
+				Vous souhaitez participer à la grande aventure du cricket français et accompagner le projet sportif et
+				social du Nîmes Cricket Club ?
+				<br>
+				Vous êtes les bienvenus !
+			</p>
+			<div class="w-full flex gap-12 max-lg:flex-col">
+				<div class="w-full h-fit p-12 rounded-lg bg-gray-100">
+					<twig:SubHeading title="Devenez Bénévole" size="2"/>
+					<div class="space-y-2">
+						<p>
+							Toute forme d’aide est précieuse et bienvenue, qu’elle soit ponctuelle ou régulière.
+							<br>
+							Cela peut être :
+						</p>
+						<ul class="list-disc ml-5">
+							<li>Accompagner les entrainements, les animations</li>
+							<li>Accompagner les matchs et les déplacements</li>
+							<li>Participer aux événements grand publics de diverses manières</li>
+							<li>Aider à la communication, à l’administration du club</li>
+							<li>Aider à l’accompagnement social, juridique, linguistique et professionnel des joueurs.
+							</li>
+						</ul>
+					</div>
+					<div class="pt-5 space-y-2">
+						<p>Si vous souhaitez participer et pour en savoir plus :</p>
+						<a class="block w-fit button-primary" href="{{ path('app_contact') }}">Nous contacter</a>
+					</div>
+				</div>
+				<div class="w-full h-fit p-12 rounded-lg bg-gray-100">
+					<twig:SubHeading title="Devenez Partenaire" size="2"/>
+					<div class="space-y-8">
+						<div class="space-y-2">
+							<twig:SubHeading title="En devenant Mécène" size="1"/>
+							<p>
+								Un mécène est une personne physique ou morale qui va accompagner le projet du club en
+								proposant un don. Ce don donne lieu à l’édition d’un reçu fiscal, permettant de
+								récupérer 60 % (ou 66 % pour une personne physique) du montant de votre don sous forme
+								de déduction fiscale.
+							</p>
+							<p>
+								Le mécénat de compétence :
+								<br>
+								Le mécénat de compétences consiste à mettre à disposition du club des compétences
+								spécifiques (comptabilité, informatique, ou autre).
+							</p>
+							<p>Ce mécénat donne également lieu à l’édition d’un reçu fiscal.</p>
+						</div>
+						<div class="space-y-2">
+							<twig:SubHeading title="En devenant Sponsor" size="1"/>
+							<p>Votre entreprise peut aussi devenir sponsor du Nîmes Cricket Club et bénéficier, en
+								contrepartie d’une aide financière, d’un affichage publicitaire :</p>
+							<ul class="list-disc ml-5">
+								<li>Sur les maillots des joueurs</li>
+								<li>Sur les banderoles publicitaires, à l’occasion des matchs et évènements</li>
+								<li>Sur tout autre support</li>
+							</ul>
+						</div>
+					</div>
+					<div class="pt-5 space-y-2">
+						<p>Pour définir avec vous les modalités de votre partenariat :</p>
+						<a class="block w-fit button-primary" href="{{ path('app_contact') }}">Nous contacter</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

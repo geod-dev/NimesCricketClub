@@ -9,7 +9,7 @@
 
 <div {{ attributes }}>
     <div class="h-20 w-screen"></div>
-    <div class="box fixed top-0 left-0 w-screen h-20 py-2 shadow-lg bg-background flex-between z-50 navbar">
+    <div class="box fixed top-0 left-0 w-screen h-20 py-2 shadow-lg bg-background flex-between z-[39] navbar">
         <div class="lg:order-2 z-10">
             <button type="button" class="lg:hidden menu-open h-12 w-12">
                 <span class="block h-5 w-5">
@@ -42,7 +42,7 @@
         </a>
         <div class="order-3 hidden lg:block">
             <div class="flex-center gap-2">
-                <a class="button-primary" href="#">Nous Rejoindre</a>
+                <button class="button-primary modal-toggle" data-for="join-us-modal">Nous Rejoindre</button>
                 {% if is_granted("ROLE_ADMIN") %}
                     <a class="button-gray button-icon" href="{{ path('app_admin') }}">
                         <span class="block h-5 w-5">
@@ -51,6 +51,29 @@
                     </a>
                 {% endif %}
             </div>
+        </div>
+    </div>
+
+    <div class="modal bg-background p-12 rounded space-y-12" id="join-us-modal">
+        <p class="font-extrabold text-center text-3xl">Nous Rejoindre</p>
+        <div class="flex gap-12">
+            <a class="group flex items-center flex-col gap-3 cursor-pointer"
+               href="https://www.helloasso.com/associations/nimescricketclub" target="_blank">
+                <span class="h-24 w-24 rounded-full shadow-xl">
+                    {{ source('ball.svg') }}
+                </span>
+                <span class="group-hover:underline text-lg font-bold">Jouer au Cricket</span>
+            </a>
+            <a class="group flex items-center flex-col gap-3 cursor-pointer" href="{{ path('app_support') }}">
+                <span class="h-24 w-24">
+                    {{ source('user-group.svg') }}
+                </span>
+                <span class="group-hover:underline text-lg font-bold text-center">
+                    Accompagner le Projet
+                    <br>
+                    Devenir Partenaire
+                </span>
+            </a>
         </div>
     </div>
 </div>
