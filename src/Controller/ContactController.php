@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Transport\TransportInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Part\DataPart;
 use Symfony\Component\Mime\Part\File;
@@ -50,17 +51,14 @@ class ContactController extends AbstractController
             $email = (new Email());
 
             $email
-                ->from('contact@nimescricketclub.fr')
-                ->subject('Message de ' . $contactSubmission->getName() . ' view le formulaire de contact')
-                ->to($contactSubmission->getEmail())
-                ->text(
-                    'Email: ' . $contactSubmission->getEmail() . \PHP_EOL . $contactSubmission->getContent(),
-                    'text/plain'
-                );
+                ->from(new Address($contactSubmission->getEmail(), $contactSubmission->getName()))
+                ->subject('Message de ' . $contactSubmission->getName() . ' via le formulaire de contact')
+                ->to('contact@nimescricketclub.fr')
+                ->text($contactSubmission->getContent());
 
             foreach ($contactSubmission->getAttachments() as $attachment) {
                 $path = $attachmentsPath . '/' . $attachment->getPath();
-                $email->addPart(new DataPart(new File($path)));
+                $email->addPart(new DataPart(new File($path), $attachment->getName()));
             }
 
             try {
