@@ -1,5 +1,7 @@
 .modal {
-	@apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -mt-24 hidden opacity-0 transition-opacity z-50;
+	@apply fixed top-0 left-0 z-50;
+	transform: translate(calc(50vw - 50%), calc(40vh - 55%));
+	@apply hidden opacity-0 transition-opacity;
 
 	&.active {
 		@apply block opacity-100;

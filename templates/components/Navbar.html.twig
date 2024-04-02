@@ -30,7 +30,7 @@
                         {{ name }}
                     </a>
                 {% endfor %}
-                <a class="button-primary w-full lg:hidden" href="#">Nous Rejoindre</a>
+                <button class="button-primary w-full lg:hidden modal-toggle" data-for="join-us-modal">Nous Rejoindre</button>
                 {% if is_granted("ROLE_ADMIN") %}
                     <a class="button-gray w-full lg:hidden" href="{{ path('app_admin') }}">Admin</a>
                 {% endif %}
@@ -56,7 +56,7 @@
 
     <div class="modal bg-background p-12 rounded space-y-12" id="join-us-modal">
         <p class="font-extrabold text-center text-3xl">Nous Rejoindre</p>
-        <div class="flex gap-12">
+        <div class="flex max-sm:flex-col gap-12">
             <a class="group flex items-center flex-col gap-3 cursor-pointer"
                href="https://www.helloasso.com/associations/nimescricketclub" target="_blank">
                 <span class="h-24 w-24 rounded-full shadow-xl">
