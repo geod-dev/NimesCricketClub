@@ -16,5 +16,5 @@ return [
     Symfony\UX\Dropzone\DropzoneBundle::class => ['all' => true],
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
-    Nucleos\AntiSpamBundle\NucleosAntiSpamBundle::class => ['all' => true],
+    Omines\AntiSpamBundle\AntiSpamBundle::class => ['all' => true],
 ];
