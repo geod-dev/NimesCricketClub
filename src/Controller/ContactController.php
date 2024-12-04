@@ -43,7 +43,7 @@ class ContactController extends AbstractController
                 $filesystem->dumpFile($fullPath, $file->getContent());
 
                 $attachment = new Attachment();
-                $attachment->setName($file->getClientOriginalName())->setPath($path);
+                $attachment->setName($file->getClientOriginalName())->setPath($path)->setIsPrivate(true);
                 $contactSubmission->addAttachment($attachment);
                 $entityManager->persist($attachment);
             }

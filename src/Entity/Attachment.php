@@ -23,6 +23,9 @@ class Attachment
     #[ORM\Column(length: 511)]
     private ?string $path = null;
 
+    #[ORM\Column]
+    private bool $isPrivate = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +51,18 @@ class Attachment
     public function setPath(string $path): static
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function isPrivate(): ?bool
+    {
+        return $this->isPrivate;
+    }
+
+    public function setIsPrivate(bool $isPrivate): static
+    {
+        $this->isPrivate = $isPrivate;
 
         return $this;
     }

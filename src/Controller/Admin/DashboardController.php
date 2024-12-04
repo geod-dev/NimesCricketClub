@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activity;
+use App\Entity\Competition;
 use App\Entity\ContactSubmission;
 use App\Entity\News;
 use App\Entity\Partner;
@@ -45,6 +46,8 @@ class DashboardController extends AbstractDashboardController
 
     public function configureAssets(): Assets
     {
-        return Assets::new()->addCssFile('admin/css/admin.css');
+        return Assets::new()
+            ->addCssFile('admin/css/admin.css')
+            ->addJsFile('admin/js/trix-editor-upload.js');
     }
 }

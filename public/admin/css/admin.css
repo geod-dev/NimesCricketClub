@@ -1,3 +1,12 @@
 :root {
     --color-primary: #007b45 !important;
 }
+
+trix-toolbar .trix-button-group--file-tools {
+    display: flex !important;
+}
+
+trix-toolbar .trix-button--icon-attach:before {
+    bottom:0 !important;
+    top:0 !important;
+}
