@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compétitions{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<twig:Heading title="Les Compétitions"/>
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-wrap">
+			{% for competition in competitions %}
+				<div class="w-full flex-start flex-col gap-5 py-5 px-12 rounded-lg {{ competition.win ? "bg-background-win" : "bg-background-loose" }}">
+					<p>{{ competition.name }}</p>
+					<div class="flex-center gap-8">
+						<div class="w-52 flex flex-col items-end text-right">
+							<img src="{{ asset('logo.png') }}" alt="Logo du NCC" class="h-16 aspect-square rounded mb-1">
+							<p class="w-52 font-semibold">Nîmes cricket Club</p>
+							<p class="text-2xl font-bold">{{ competition.personalPoints }}</p>
+							<p class="text-sm font-medium text-foreground-light">{{ competition.personalOvers }} overs</p>
+						</div>
+						<div class="w-52 flex flex-col items-start text-left">
+							<div class="h-16 w-32 mb-1">
+								<img class="w-full h-full object-contain object-left rounded" src="{{ asset(competition.imagePath) }}" alt="Logo {{ competition.opponentName }}">
+							</div>
+							<p class="font-semibold">{{ competition.opponentName }}</p>
+							<p class="text-2xl font-bold">{{ competition.opponentPoints }}</p>
+							<p class="text-sm font-medium text-foreground-light">{{ competition.opponentOvers }} overs</p>
+						</div>
+					</div>
+					<div class="w-full {{ competition.description ? "" : "hidden" }}">
+						{{ competition.description|raw }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

@@ -17,7 +17,9 @@ module.exports = {
 				background: {
 					DEFAULT: "#fff",
 					dark: "#f0f2f1",
-					darker: "#e6e8e7"
+					darker: "#e6e8e7",
+					win: "#d5ece0",
+					loose: "#f3dfdf",
 				},
 				foreground: {
 					extralight: "#b8c2bf",

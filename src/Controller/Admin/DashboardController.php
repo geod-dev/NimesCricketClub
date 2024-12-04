@@ -36,9 +36,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToRoute('Back to Website', 'fa fa-caret-left', "app_home");
         yield MenuItem::section('Modules');
         yield MenuItem::linkToCrud('News', 'fa fa-newspaper', News::class);
-        yield MenuItem::linkToCrud('Players', 'fa fa-baseball-bat-ball', Player::class);
+        yield MenuItem::linkToCrud('Players', 'fa fa-shirt', Player::class);
         yield MenuItem::linkToCrud('Partners', 'fa fa-handshake', Partner::class);
         yield MenuItem::linkToCrud('Activities', 'fa fa-bolt-lightning', Activity::class);
+        yield MenuItem::linkToCrud('Competitions', 'fa fa-baseball-bat-ball', Competition::class);
         yield MenuItem::linkToCrud('Contacts', 'fa fa-users', ContactSubmission::class);
     }
 
