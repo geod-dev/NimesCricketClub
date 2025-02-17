@@ -51,10 +51,10 @@ class ContactController extends AbstractController
             $email = (new Email());
 
             $email
-                ->from(new Address($contactSubmission->getEmail(), $contactSubmission->getName()))
+                ->from(new Address('contact@nimescricketclub.fr', $contactSubmission->getName()))
                 ->subject('Message de ' . $contactSubmission->getName() . ' via le formulaire de contact')
                 ->to('contact@nimescricketclub.fr')
-                ->text($contactSubmission->getContent());
+                ->text('Email: ' . $contactSubmission->getEmail() . "\n\n" .$contactSubmission->getContent());
 
             foreach ($contactSubmission->getAttachments() as $attachment) {
                 $path = $attachmentsPath . '/' . $attachment->getPath();
