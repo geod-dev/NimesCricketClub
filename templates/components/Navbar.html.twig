@@ -1,11 +1,11 @@
-{% set links = {
-    "app_home": "Accueil",
-    "app_news": "Actus",
-    "app_player": "L'Equipe",
-    "app_competition": "Compétitions",
-    "app_about": "A Propos",
-    "app_contact": "Nous Contacter"
-} %}
+{% set links = [
+    "app_home",
+    "app_news",
+    "app_team",
+    "app_competition",
+    "app_about",
+    "app_contact"
+] %}
 
 <div {{ attributes }}>
     <div class="h-20 w-screen"></div>
@@ -23,11 +23,11 @@
                          class="w-full lg:order-1 pb-5 mb-2 border-b border-foreground-extralight">
                 </div>
 
-                {% for route, name in links %}
+                {% for route in links %}
                     {% set active = app.request.attributes.get('_route') starts with route %}
                     <a href="{{ path(route) }}"
                        class="{{ active ? "bg-background-darker text-foreground font-semibold" : "hover:bg-background-dark text-foreground-light font-medium" }} hover:text-foreground rounded px-3 py-2 w-full lg:w-auto shrink-0">
-                        {{ name }}
+                        {{ ('nav.' ~ route)|trans }}
                     </a>
                 {% endfor %}
                 <button class="button-primary w-full lg:hidden modal-toggle" data-for="join-us-modal">Nous Rejoindre</button>
@@ -42,7 +42,7 @@
         </a>
         <div class="order-3 hidden lg:block">
             <div class="flex-center gap-2">
-                <button class="button-primary modal-toggle" data-for="join-us-modal">Nous Rejoindre</button>
+                <button class="button-primary modal-toggle" data-for="join-us-modal">{{ "nav.join_us.label"|trans }}</button>
                 {% if is_granted("ROLE_ADMIN") %}
                     <a class="button-gray button-icon" href="{{ path('app_admin') }}">
                         <span class="block h-5 w-5">
@@ -50,28 +50,27 @@
                         </span>
                     </a>
                 {% endif %}
+                <twig:LanguageSelector/>
             </div>
         </div>
     </div>
 
     <div class="modal bg-background p-12 rounded space-y-12" id="join-us-modal">
-        <p class="font-extrabold text-center text-3xl">Nous Rejoindre</p>
+        <p class="font-extrabold text-center text-3xl">{{ "nav.join_us.label"|trans }}</p>
         <div class="flex max-sm:flex-col gap-12">
             <a class="group flex items-center flex-col gap-3 cursor-pointer"
                href="https://www.helloasso.com/associations/nimescricketclub" target="_blank">
                 <span class="h-24 w-24 rounded-full shadow-xl">
                     {{ source('ball.svg') }}
                 </span>
-                <span class="group-hover:underline text-lg font-bold">Jouer au Cricket</span>
+                <span class="group-hover:underline text-lg font-bold">{{ "nav.join_us.play"|trans }}</span>
             </a>
             <a class="group flex items-center flex-col gap-3 cursor-pointer" href="{{ path('app_support') }}">
                 <span class="h-24 w-24">
                     {{ source('user-group.svg') }}
                 </span>
                 <span class="group-hover:underline text-lg font-bold text-center">
-                    Accompagner le Projet
-                    <br>
-                    Devenir Partenaire
+                    {{ "nav.join_us.sponsor"|trans|raw }}
                 </span>
             </a>
         </div>

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos Activités{% endblock %}
+{% block title %}{{ "activities.label"|trans }}{% endblock %}
 
 {% block body %}
     <div class="page">
-        <twig:Heading title="Nos Activités" />
+        <twig:Heading title="{{ "activities.label"|trans }}" />
         <twig:Activities />
     </div>
 {% endblock %}

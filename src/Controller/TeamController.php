@@ -7,12 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PlayerController extends AbstractController
+class TeamController extends AbstractController
 {
-    #[Route('/joueurs', name: 'app_player')]
+    #[Route('/joueurs', name: 'app_team')]
     public function index(PlayerRepository $repository): Response
     {
-        return $this->render('player/index.html.twig', [
+        return $this->render('team/index.html.twig', [
             'players' => $repository->findAll(),
         ]);
     }

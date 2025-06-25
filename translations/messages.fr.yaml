@@ -1,0 +1,51 @@
+nav:
+    app_home: "Accueil"
+    app_news: "Actus"
+    app_team: "L'Equipe"
+    app_competition: "Compétitions"
+    app_about: "A Propos"
+    app_contact: "Nous Contacter"
+    join_us:
+        label: "Nous Rejoindre"
+        play: "Jouer au Cricket"
+        sponsor: "Accompagner le Projet<br>Devenir Partenaire"
+    legal: "Mentions Légales"
+
+home:
+    label: "Accueil"
+    headline: "Découvrez le <br> Nîmes Cricket Club !"
+    description: "Avec un projet à la fois sportif et social, le <b class='text-foreground'>Nîmes Cricket Club</b> developpe la pratique du cricket auprès de tous les publics."
+
+news.label: "Les Actualités"
+
+activities:
+    label: "Nos Activités"
+    activity: "Activité"
+    back_cta: "Retour aux Activités"
+
+competitions.label: "Les Compétitions"
+
+team.label: "L'équipe"
+
+contact:
+    label: "Nous Contacter"
+    input:
+        name: "Nom Complet"
+        email: "Adresse Email"
+        content: "Messages"
+        attachments: "Pièces Jointes (facultatif)"
+    submit: "Envoyer"
+
+video_warn: "En cliquant sur le bouton de lecture, vous consentez au chargement de cookies de suivi externes associés à YouTube.
+        Assurez-vous d'être informé(e) de cette utilisation potentielle de cookies de suivi avant de procéder."
+
+discover:
+    label: "C'est quoi le Cricket ?"
+    presentation: "<b>Le cricket</b> est un sport collectif très ancien (14e siècle), il se joue avec des battes et des balles.
+    <br>2 équipes composées de 11 joueurs s’affrontent sur un terrain gazonné et ovale au centre duquel se trouve une
+    zone d’une vingtaine de mètres de longueur (le pitch ou zone de jeu).
+    <br>Dans cette zone se trouve une structure en bois appelée le « guichet » où les lancers s’effectuent.
+    <br>Une rencontre de cricket est divisée en plusieurs manches. Au cours de chacune d’entre elles, l’une des équipes
+    essaye de marquer des points et possède simultanément deux batteurs sur le terrain, chacun devant l’un des guichets.
+    Un point est notamment marqué à chaque échange de position de ces deux joueurs lorsque la balle est en jeu."
+    video_suggestion: "Pour encore mieux comprendre le cricket : regardez la vidéo !"

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{ "home.label"|trans }}{% endblock %}
 
 {% block body %}
     <div class="home">
@@ -8,8 +8,10 @@
              style="background-position: 50% 70%; background-image: url('{{ asset('images/home.jpg') }}')">
             <span class="absolute top-0 left-0 bg-black bg-opacity-50 w-screen h-full z-0"></span>
             <div class="z-10 py-20">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">Découvrez le <br> Nîmes Cricket Club !</h1>
-                <a class="button-secondary shadow" href="{{ path('app_discover') }}">C'est quoi le Cricket ?</a>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">{{ "home.headline"|trans|raw }}</h1>
+                <a class="button-secondary shadow" href="{{ path('app_discover') }}">
+                    {{ "discover.label"|trans }}
+                </a>
             </div>
             <small class="absolute bottom-0 right-0 text-background z-10 mb-1 mr-5">
                 Photo
@@ -21,13 +23,12 @@
 
         <div class="box bg-background-darker">
             <p class="text-foreground-light text-justify font-medium text-lg">
-                Avec un projet à la fois sportif et social, le <b class="text-foreground">Nîmes Cricket Club</b>
-                developpe la pratique du cricket auprès de tous les publics.
+                {{ "home.description"|trans|raw }}
             </p>
         </div>
 
         <div class="box space-y-8">
-            <twig:SubHeading title="Nos Activités" />
+            <twig:SubHeading title="{{ "activities.label"|trans }}" />
             <twig:Activities />
         </div>
 

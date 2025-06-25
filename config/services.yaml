@@ -1,6 +1,10 @@
 parameters:
     attachments_path: "%kernel.project_dir%/data/attachments"
 
+    ai_endpoint.uri: "%env(AI_ENDPOINT_URI)%"
+    ai_endpoint.api_key: "%env(AI_ENDPOINT_API_KEY)%"
+    ai_endpoint.model: "%env(AI_ENDPOINT_MODEL)%"
+
 services:
     _defaults:
         autowire: true

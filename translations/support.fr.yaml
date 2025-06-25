@@ -1,0 +1,34 @@
+label: "Accompagnez le Projet !"
+intro: "Vous souhaitez participer à la grande aventure du cricket français et accompagner le projet sportif et social du Nîmes Cricket Club ?
+<br>Vous êtes les bienvenus !"
+
+volunteering:
+    label: "Devenez Bénévole"
+    content: "Toute forme d’aide est précieuse et bienvenue, qu’elle soit ponctuelle ou régulière.<br>Cela peut être :"
+    tasks: "<li>Accompagner les entrainements, les animations</li>
+    <li>Accompagner les matchs et les déplacements</li>
+    <li>Participer aux événements grand publics de diverses manières</li>
+    <li>Aider à la communication, à l’administration du club</li>
+    <li>Aider à l’accompagnement social, juridique, linguistique et professionnel des joueurs.</li>"
+    pre_cta_text: "Si vous souhaitez participer et pour en savoir plus :"
+
+partner:
+    label: "Devenez Partenaire"
+
+    donation:
+        label: "En devenant Mécène"
+        description: "Un mécène est une personne physique ou morale qui va accompagner le projet du club en proposant un don.
+        Ce don donne lieu à l’édition d’un reçu fiscal, permettant de récupérer 60 % (ou 66 % pour une personne physique)
+        du montant de votre don sous forme de déduction fiscale."
+        skills: "Le mécénat de compétence :
+        <br>Le mécénat de compétences consiste à mettre à disposition du club des compétences spécifiques (comptabilité, informatique, ou autre).
+        <br>Ce mécénat donne également lieu à l’édition d’un reçu fiscal."
+
+    sponsor:
+        label: "En devenant Sponsor"
+        description: "Votre entreprise peut aussi devenir sponsor du Nîmes Cricket Club et bénéficier, en contrepartie d’une aide financière, d’un affichage publicitaire :"
+        ad_places: "<li>Sur les maillots des joueurs</li>
+        <li>Sur les banderoles publicitaires, à l’occasion des matchs et évènements</li>
+        <li>Sur tout autre support</li>"
+
+    pre_cta_text: "Pour définir avec vous les modalités de votre partenariat :"

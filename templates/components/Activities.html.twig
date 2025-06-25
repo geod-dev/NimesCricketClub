@@ -2,9 +2,9 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-16">
         {% for activity in this.activities %}
             <a class="block space-y-2 w-full" href="{{ path('app_activity_detail', {slug: activity.slug}) }}">
-                <img src="{{ asset(activity.imagePath)|imagine_filter("miniature") }}" alt="Image de l'activité {{ activity.name }}"
+                <img src="{{ asset(activity.imagePath)|imagine_filter("miniature") }}" alt="Image de l'activité {{ activity.title(app.locale) }}"
                      class="w-full object-cover object-top aspect-video rounded">
-                <p class="text-xl xl:text-2xl font-bold text-center">{{ activity.name }}</p>
+                <p class="text-xl xl:text-2xl font-bold text-center">{{ activity.title(app.locale) }}</p>
             </a>
         {% endfor %}
         <span class="flex-grow shrink"></span>

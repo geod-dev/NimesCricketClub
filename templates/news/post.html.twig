@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title(app.locale) }}{% endblock %}
 
 {% block body %}
     <div class="box flex-center">
@@ -8,12 +8,12 @@
             <div class="my-14 flex-center">
                 <div class="w-full lg:w-2/3 text-center space-y-2">
                     <small class="block text-foreground-light">{{ post.createdAt|date("d/m/Y") }}</small>
-                    <h1 class="text-3xl sm:text-5xl xl:text-6xl font-bold break-words">{{ post.title }}</h1>
+                    <h1 class="text-3xl sm:text-5xl xl:text-6xl font-bold break-words">{{ post.title(app.locale) }}</h1>
                 </div>
             </div>
             <img zoomable class="rounded w-full aspect-video object-cover object-top" src="{{ asset(post.imagePath)|imagine_filter("full") }}" alt="">
             <div class="post-content my-8">
-                {{ post.content|raw }}
+                {{ post.content(app.locale)|raw }}
             </div>
         </div>
     </div>

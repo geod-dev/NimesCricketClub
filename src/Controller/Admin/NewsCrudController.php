@@ -20,10 +20,10 @@ class NewsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
-            SlugField::new('slug')->setTargetFieldName('title'),
+            TextField::new('titleFr', 'Title'),
+            SlugField::new('slug')->setTargetFieldName('titleFr'),
             PublicImageField::new(News::UPLOAD_PATH),
-            TextEditorField::new('content'),
+            TextEditorField::new('contentFr', 'Content'),
         ];
     }
 }

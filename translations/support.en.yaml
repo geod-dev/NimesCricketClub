@@ -1,0 +1,34 @@
+label: "Support the Project!"
+intro: "Do you want to participate in the great adventure of French cricket and support the sporting and social project of the Nîmes Cricket Club?
+<br>You are welcome!"
+
+volunteering:
+    label: "Become a Volunteer"
+    content: "Any form of help is precious and welcome, whether it is occasional or regular.<br>This can include:"
+    tasks: "<li>Supporting training sessions and activities</li>
+    <li>Supporting matches and travel</li>
+    <li>Participating in public events in various ways</li>
+    <li>Helping with communication and club administration</li>
+    <li>Assisting with the social, legal, linguistic, and professional support of players.</li>"
+    pre_cta_text: "If you wish to participate and learn more:"
+
+partner:
+    label: "Become a Partner"
+
+    donation:
+        label: "By Becoming a Patron"
+        description: "A patron is an individual or legal entity who supports the club's project by making a donation.
+        This donation results in the issuance of a tax receipt, allowing you to recover 60% (or 66% for individuals)
+        of the amount of your donation as a tax deduction."
+        skills: "Skills-based patronage:
+        <br>Skills-based patronage involves providing the club with specific skills (accounting, IT, or other).
+        <br>This type of patronage also results in the issuance of a tax receipt."
+
+    sponsor:
+        label: "By Becoming a Sponsor"
+        description: "Your company can also become a sponsor of the Nîmes Cricket Club and, in return for financial support, benefit from advertising displays:"
+        ad_places: "<li>On the players' jerseys</li>
+        <li>On advertising banners during matches and events</li>
+        <li>On any other medium</li>"
+
+    pre_cta_text: "To define the terms of your partnership with you:"

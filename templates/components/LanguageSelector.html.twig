@@ -1,0 +1,7 @@
+<div{{ attributes }}>
+    {% if app.locale == "fr" %}
+        <a href="{{ path(app.current_route, app.current_route_parameters|merge({_locale: 'en'})) }}">EN</a>
+    {% else %}
+        <a href="{{ path(app.current_route, app.current_route_parameters|merge({_locale: 'fr'})) }}">FR</a>
+    {% endif %}
+</div>

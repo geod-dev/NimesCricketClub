@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Actus{% endblock %}
+{% block title %}{{ "news.label"|trans }}{% endblock %}
 
 {% block body %}
     <div class="page">
-        <twig:Heading title="Les Actualités" />
+        <twig:Heading title="{{ "news.label"|trans }}" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 flex-wrap">
             {% for post in news %}
                 <a class="w-full block space-y-2" href="{{ path('app_news_post', {slug: post.slug}) }}">
                     <img class="aspect-video object-center object-cover rounded" src="{{ asset(post.imagePath)|imagine_filter("miniature") }}" alt="">
                     <div class="px-2 py-1">
-                        <p class="text-3xl font-medium">{{ post.title }}</p>
+                        <p class="text-3xl font-medium">{{ post.title(app.locale) }}</p>
                         <small class="text-foreground-light">{{ post.createdAt|date("d/m/Y") }}</small>
                     </div>
                 </a>

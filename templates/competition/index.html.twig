@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Compétitions{% endblock %}
+{% block title %}{{ "competitions.label"|trans }}{% endblock %}
 
 {% block body %}
 	<div class="page">
-		<twig:Heading title="Les Compétitions"/>
+		<twig:Heading title="{{ "competitions.label"|trans }}"/>
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-wrap">
 			{% for competition in competitions %}
 				<div class="w-full flex-start flex-col gap-5 py-5 px-12 rounded-lg {{ competition.win ? "bg-background-win" : "bg-background-loose" }}">
-					<p>{{ competition.name }}</p>
+					<p>{{ competition.title(app.locale) }}</p>
 					<div class="flex-center gap-8">
 						<div class="w-52 flex flex-col items-end text-right">
 							<img src="{{ asset('logo.png') }}" alt="Logo du NCC" class="h-16 aspect-square rounded mb-1">
@@ -25,8 +25,8 @@
 							<p class="text-sm font-medium text-foreground-light">{{ competition.opponentOvers }} overs</p>
 						</div>
 					</div>
-					<div class="w-full {{ competition.description ? "" : "hidden" }}">
-						{{ competition.description|raw }}
+					<div class="w-full {{ competition.content(app.locale) ? "" : "hidden" }}">
+						{{ competition.content(app.locale)|raw }}
 					</div>
 				</div>
 			{% endfor %}

@@ -1,0 +1,35 @@
+label: "Legal Notices"
+effective: "Effective as of 02/01/2024"
+
+intro: "In accordance with the provisions of Articles 6-III and 19 of Law No. 2004-575 of June 21, 2004 for
+Confidence in the Digital Economy, known as L.C.E.N., users and visitors, hereinafter referred to as the \"User\",
+of the site nimescricketclub.fr, hereinafter referred to as the \"Site\", are informed of the following legal notices.
+<br>Connecting to and navigating the Site by the User implies full and unreserved acceptance of these legal notices.
+<br>These notices are accessible on the Site under the \"Legal Notices\" section at the bottom of each page."
+
+article_1:
+    label: "Article 1 - The Publisher"
+    content: "The Site is published by Nîmes Cricket Club Association 1901 with a capital of 0 euros,
+    registered in the Trade and Companies Register of 30000 under the number 85191377200022,
+    whose head office is located at 133B Route d'Uzès 30000 Nîmes,
+    <br>Phone number <a class=\"underline\" href=\"tel:+33611919235\">+33 6 11 91 92 35</a>,
+    <br>Email address: <a class=\"underline\" href=\"mailto:nimescricketclub@gmail.com\">nimescricketclub@gmail.com</a>.
+    <br>The Publication Director is Pénélope Chauvin de Précourt, hereinafter referred to as the \"Publisher\"."
+
+article_2:
+    label: "Article 2 - The Host"
+    content: "The Site is hosted by the company La Soierie, whose head office is located at 30460 Lasalle."
+
+article_3:
+    label: "Article 3 - Access to the Site"
+    content: "The Site is accessible anywhere, 7 days a week, 24 hours a day, except in cases of force majeure, or unplanned or planned interruptions due to maintenance requirements.
+    <br>In case of modification, interruption, or suspension of the Site, the Publisher cannot be held responsible."
+
+article_4:
+    label: "Article 4 - Data Collection"
+    content: "The site is exempt from declaration to the Commission Nationale Informatique et Libertés (CNIL) as it does not collect any data concerning users.
+    <br>Any use, reproduction, distribution, commercialization, modification of all or part of the Site,
+    without the authorization of the Publisher is prohibited and may result in legal actions and proceedings as provided
+    by the Intellectual Property Code and the Civil Code."
+
+credit: "Written on <a class=\"underline\" href=\"https://www.legalplace.fr/contrats/mentions-legales-2\">https://legalplace.fr</a>"

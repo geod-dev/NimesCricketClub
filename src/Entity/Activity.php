@@ -2,18 +2,20 @@
 
 namespace App\Entity;
 
+use App\Entity\Interface\TranslatableInterface;
 use App\Entity\Trait\ImageTrait;
 use App\Entity\Trait\TimestampTrait;
+use App\Entity\Trait\TranslatableTrait;
 use App\Repository\ActivityRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ActivityRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Activity
+class Activity implements TranslatableInterface
 {
     use ImageTrait;
     use TimestampTrait;
+    use TranslatableTrait;
 
     const UPLOAD_PATH = "uploads/activity";
 
@@ -23,29 +25,11 @@ class Activity
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $slug = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getSlug(): ?string
@@ -56,18 +40,6 @@ class Activity
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): static
-    {
-        $this->content = $content;
 
         return $this;
     }

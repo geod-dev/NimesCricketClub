@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nous Contacter{% endblock %}
+{% block title %}{{ "contact.label"|trans }}{% endblock %}
 
 {% block body %}
 	{{ form_start(form) }}
 	<div class="box flex-center flex-col md:w-2/3 mx-auto mt-12">
-		<h1 class="text-4xl font-bold mb-5">Nous Contacter</h1>
+		<h1 class="text-4xl font-bold mb-5">{{ "contact.label"|trans }}</h1>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 w-full gap-8">
-			{{ form_row(form.name, {label: "Nom Complet", row_attr: {class: 'form-row'}}) }}
-			{{ form_row(form.email, {label: "Adresse Email", row_attr: {class: 'form-row'}}) }}
+			{{ form_row(form.name, {label: "contact.input.name"|trans, row_attr: {class: 'form-row'}}) }}
+			{{ form_row(form.email, {label: "contact.input.email"|trans, row_attr: {class: 'form-row'}}) }}
 		</div>
-		{{ form_row(form.content, {label: "Message", row_attr: {class: 'form-row'}}) }}
-		{{ form_row(form.attachments, {label: "Pièces Jointes (facultatif)", row_attr: {class: 'form-row'}}) }}
+		{{ form_row(form.content, {label: "contact.input.content"|trans, row_attr: {class: 'form-row'}}) }}
+		{{ form_row(form.attachments, {label: "contact.input.attachments"|trans, row_attr: {class: 'form-row'}}) }}
 
 		<button class="button-primary self-start" type="submit">
-			Envoyer
+			{{ "contact.submit"|trans }}
 		</button>
 
 	</div>

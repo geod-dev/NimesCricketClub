@@ -1,0 +1,49 @@
+nav:
+    app_home: "Home"
+    app_news: "News"
+    app_team: "Team"
+    app_competition: "Competitions"
+    app_about: "About Us"
+    app_contact: "Contact Us"
+    join_us:
+        label: "Join Us"
+        play: "Play Cricket"
+        sponsor: "Support the Project<br>Become a Partner"
+    legal: "Legal Notices"
+
+home:
+    label: "Home"
+    headline: "Discover the <br> Nîmes Cricket Club!"
+    description: "With a project that is both sporting and social, the <b class='text-foreground'>Nîmes Cricket Club</b> develops the practice of cricket for all audiences."
+
+news.label: "News"
+
+activities:
+    label: "Our Activities"
+    activity: "Activity"
+    back_cta: "Back to Activities"
+
+competitions.label: "Competitions"
+
+team.label: "The Team"
+
+contact:
+    label: "Contact Us"
+    input:
+        name: "Full Name"
+        email: "Email Address"
+        content: "Message"
+        attachments: "Attachments (optional)"
+    submit: "Send"
+
+video_warn: "By clicking the play button, you consent to the loading of external tracking cookies associated with YouTube.
+        Make sure you are informed about this potential use of tracking cookies before proceeding."
+
+discover:
+    label: "What is Cricket?"
+    presentation: "<b>Cricket</b> is a very old team sport (14th century), played with bats and balls.
+    <br>Two teams of 11 players compete on a grassy, oval field with a central area about twenty meters long (the pitch or playing area).
+    <br>In this area, there is a wooden structure called the 'wicket' where the bowling takes place.
+    <br>A cricket match is divided into several innings. During each of them, one of the teams tries to score points and has two batters on the field simultaneously, each in front of one of the wickets.
+    <br>A point is scored, among other ways, each time these two players exchange positions when the ball is in play."
+    video_suggestion: "To better understand cricket: watch the video!"

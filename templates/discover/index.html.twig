@@ -1,35 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C'est quoi le Cricket ?{% endblock %}
+{% block title %}{{ "discover.label"|trans }}{% endblock %}
 
 {% block body %}
     <div class="page">
-        <twig:Heading title="C'est quoi le Cricket ?" />
+        <twig:Heading title="{{ "discover.label"|trans }}" />
         <div class="flex max-lg:flex-col gap-12 mt-12">
             <div class="w-full lg:w-1/2">
-                <p class="text-xl leading-10">
-                    <b>Le cricket</b> est un sport collectif très ancien (14e siècle), il se joue avec des battes et des
-                    balles.
-                    <br>
-                    2 équipes composées de 11 joueurs s’affrontent sur un terrain gazonné et ovale au centre duquel se
-                    trouve une zone d’une vingtaine de mètres de longueur (le pitch ou zone de jeu).
-                    <br>
-                    Dans cette zone se trouve une structure en bois appelée le « guichet » où les lancers s’effectuent.
-                    <br>
-                    Une rencontre de cricket est divisée en plusieurs manches. Au cours de chacune d’entre elles, l’une
-                    des
-                    équipes essaye de marquer des points et possède simultanément deux batteurs sur le terrain, chacun
-                    devant l’un des guichets. Un point est notamment marqué à chaque échange de position de ces deux
-                    joueurs
-                    lorsque la balle est en jeu.
-                </p>
+                <p class="text-xl leading-8">{{ "discover.presentation"|trans|raw }}</p>
             </div>
             <div class="w-full lg:w-1/2">
-                <p class="text-xl text-center -mt-6 pb-10">
-                    Pour encore mieux comprendre le cricket : regardez la vidéo !
-                </p>
-                <twig:Video src="https://www.youtube-nocookie.com/embed/4OG_-XH_ewA?si=tgNuLyiRF4LCP79r"
-                            title="YouTube video player"/>
+                <p class="text-xl text-center -mt-6 pb-10">{{ "discover.video_suggestion"|trans }}</p>
+                {% if app.locale == "fr" %}
+                    <twig:Video src="https://www.youtube-nocookie.com/embed/4OG_-XH_ewA?si=tgNuLyiRF4LCP79r"
+                                title="YouTube video player"/>
+                {% else %}
+                    <twig:Video src="https://www.youtube-nocookie.com/embed/g-beFHld19c?si=AtOhZ7qmm474EPtU"
+                                title="YouTube video player"/>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Joueurs{% endblock %}
+{% block title %}{{ "team.label"|trans }}{% endblock %}
 
 {% block body %}
     <div class="page">
-        <twig:Heading title="L'équipe"/>
+        <twig:Heading title="{{ "team.label"|trans }}"/>
         <div class="flex gap-6 md:gap-12 mt-5 flex-wrap">
             {% for player in players %}
                 <div class="rounded overflow-hidden">

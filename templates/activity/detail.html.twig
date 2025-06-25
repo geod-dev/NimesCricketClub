@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Activité {{ activity.name }}{% endblock %}
+{% block title %}{{ "activities.activity"|trans }} {{ activity.title(app.locale) }}{% endblock %}
 
 {% block body %}
     <div class="page">
@@ -8,17 +8,17 @@
             <span class="block h-4 w-4">
                 {{ source('arrow-left.svg') }}
             </span>
-            Retour aux Activités
+            {{ "activities.back_cta"|trans }}
         </a>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
             <div class="max-md:space-y-3">
-                <twig:SubHeading size="3" title="{{ activity.name }}" />
-                <img class="w-full rounded md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.name }}">
+                <twig:SubHeading size="3" title="{{ activity.title(app.locale) }}" />
+                <img class="w-full rounded md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.title(app.locale) }}">
                 <div class="post-content">
-                    {{ activity.content|raw }}
+                    {{ activity.content(app.locale)|raw }}
                 </div>
             </div>
-            <img class="w-full rounded max-md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.name }}" zoomable>
+            <img class="w-full rounded max-md:hidden" src="{{ asset(activity.imagePath)|imagine_filter("full") }}" alt="{{ activity.title(app.locale) }}" zoomable>
         </div>
     </div>
 {% endblock %}

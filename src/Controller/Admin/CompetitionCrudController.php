@@ -22,7 +22,7 @@ class CompetitionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name')->setColumns("col-md-9 col-lg-6"),
+            TextField::new('titleFr', 'Competition Name')->setColumns("col-md-9 col-lg-6"),
 
             FormField::addRow(),
 
@@ -46,7 +46,7 @@ class CompetitionCrudController extends AbstractCrudController
 
             FormField::addRow(),
 
-            TextEditorField::new('description'),
+            TextEditorField::new('contentFr', 'description'),
         ];
     }
 }
