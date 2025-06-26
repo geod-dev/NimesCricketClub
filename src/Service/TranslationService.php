@@ -3,9 +3,6 @@
 namespace App\Service;
 
 use App\Entity\Interface\TranslatableInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class TranslationService
 {
@@ -16,10 +13,7 @@ class TranslationService
     Do not translate tags, tags attributes names or values. Do not modify tags organization and overall architecture.";
 
     public function __construct(
-        private readonly HttpClientInterface                              $httpClient,
-        #[Autowire(param: 'ai_endpoint.uri')] private readonly string     $aiEndpointUri,
-        #[Autowire(param: 'ai_endpoint.api_key')] private readonly string $aiEndpointApiKey,
-        #[Autowire(param: 'ai_endpoint.model')] private readonly string   $aiEndpointModel
+        private readonly LLMService $llmService,
     )
     {
     }
@@ -28,18 +22,18 @@ class TranslationService
     {
         $hash = ($h = $entity->getTranslationVersionHash()) ? explode(":", $h) : [""];
 
-        $titleHash = md5($entity->getTitleFr()??"");
-        $contentHash = md5($entity->getContentFr()??"");
+        $titleHash = md5($entity->getTitleFr() ?? "");
+        $contentHash = md5($entity->getContentFr() ?? "");
         $titleModified = !isset($hash[0]) || !hash_equals($hash[0], $titleHash);
         $contentModified = !isset($hash[1]) || !hash_equals($hash[1], $contentHash);
 
         if ($titleModified) {
-            $translatedTitle = $this->query(self::SIMPLE_TRANSLATE_PROMPT, $entity->getTitleFr());
+            $translatedTitle = $this->llmService->query(self::SIMPLE_TRANSLATE_PROMPT, $entity->getTitleFr());
             $entity->setTitleEn($translatedTitle);
         }
 
         if ($contentModified) {
-            $translatedContent = $this->query(self::HTML_TRANSLATE_PROMPT, $entity->getContentFr());
+            $translatedContent = $this->llmService->query(self::HTML_TRANSLATE_PROMPT, $entity->getContentFr());
             $entity->setContentEn($translatedContent);
         }
 
@@ -48,23 +42,5 @@ class TranslationService
         }
     }
 
-    private function query(string $system_prompt, string $content): string
-    {
-        $response = $this->httpClient->request('POST', $this->aiEndpointUri, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->aiEndpointApiKey,
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'messages' => [
-                    ['role' => 'system', 'content' => $system_prompt],
-                    ['role' => 'user', 'content' => $content]
-                ],
-                'model' => $this->aiEndpointModel
-            ],
-        ]);
 
-        $response = json_decode($response->getContent(false), true);
-        return $response["choices"][0]["message"]["content"];
-    }
 }
