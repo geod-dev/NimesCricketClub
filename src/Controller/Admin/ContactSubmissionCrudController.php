@@ -8,7 +8,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -48,10 +47,9 @@ class ContactSubmissionCrudController extends AbstractCrudController
             EmailField::new('email'),
             TextEditorField::new('content', 'Message')->hideOnIndex(),
             AttachmentsField::new('attachments'),
-            DateTimeField::new('createdAt', "Creation Date")->setFormat('dd MMMM yyyy - hh:mm')->hideOnIndex(),
-//            SlugField::new('slug')->setTargetFieldName('title'),
-//            PublicImageField::new(News::UPLOAD_PATH),
-//            TextEditorField::new('content'),
+            DateTimeField::new('createdAt', "Creation Date")
+                ->setFormat('dd MMMM yyyy - hh:mm')
+                ->hideOnIndex()
         ];
     }
 }

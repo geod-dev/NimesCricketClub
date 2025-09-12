@@ -1,7 +1,7 @@
 {% if ea.crud.currentAction == 'detail' %}
 	<ul>
 		{% for item in field.value %}
-			<li><a download href="{{ path('app_admin_attachments', {path: item.path}) }}">{{ item.name }}</a></li>
+			<li><a download href="{{ path('app_attachments_get', {path: item.path}) }}">{{ item.name }}</a></li>
 		{% endfor %}
 	</ul>
 {% else %}

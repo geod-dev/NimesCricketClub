@@ -1,0 +1,64 @@
+{% apply inline_css %}
+
+	{% include "emails/header.html.twig" %}
+
+	<div class="container">
+		<h1>Confirmation de paiement</h1>
+		<p>Votre paiement de <span class="badge">{{ entry.price|number_format(2, ',', ' ') }} €</span> pour le
+			formulaire <span class="badge">{{ entry.form.titleFr }}</span> à été traité avec succès.
+			Merci pour votre confiance.</p>
+	</div>
+
+	<div class="footer">
+		<small>
+			Cet email vous est envoyé par l'association Nîmes Cricket Club suite à la confirmation de votre paiement
+			en ligne pour la soumission d'un formulaire. (ref: {{ entry.id }})
+		</small>
+	</div>
+
+	<style>
+        .footer {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer, .footer a {
+            text-align: center;
+            color: #5d5d5d;
+        }
+	</style>
+
+	<style>
+        .container {
+            color: black;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.75;
+        }
+
+        .badge {
+            padding: 0.15rem 0.3rem;
+            margin: 0 0.2rem;
+            background: #ececec;
+            border-radius: 0.35rem;
+        }
+	</style>
+{% endapply %}
+

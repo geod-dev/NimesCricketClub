@@ -6,15 +6,9 @@ use App\Entity\Attachment;
 use App\Entity\ContactSubmission;
 use App\Exception\SpamDetectedException;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\Transport\TransportInterface;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\Part\DataPart;
-use Symfony\Component\Mime\Part\File;
 use Symfony\Component\Uid\Uuid;
 
 class ContactFormService
@@ -27,23 +21,23 @@ class ContactFormService
     Do not include explanations, punctuation, or any additional words—only respond with `true` or `false`.";
 
     public function __construct(
-        #[Autowire(param: 'attachments_path')] private readonly string $attachmentsPath,
-        private readonly LLMService                                    $llmService,
-        private readonly Filesystem                                    $filesystem,
-        private readonly EntityManagerInterface                        $entityManager,
-        private readonly TransportInterface                            $mailer
+        private readonly string                 $attachmentsPath,
+        private readonly LLMService             $llmService,
+        private readonly Filesystem             $filesystem,
+        private readonly EntityManagerInterface $entityManager,
+        private readonly MailService            $mailService
     )
     {
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws SpamDetectedException
      */
     public function handleFormSubmission(FormInterface $form, ContactSubmission $contactSubmission): void
     {
         if ($this->detectSpam($contactSubmission)) throw new SpamDetectedException();
 
+        $attachments = [];
         foreach ($form->get('attachments')->getData() as $file) {
             $extension = $file->getClientOriginalExtension();
             $path = Uuid::v4()->toRfc4122() . '.' . $extension;
@@ -54,31 +48,38 @@ class ContactFormService
             $attachment->setName($file->getClientOriginalName())->setPath($path)->setIsPrivate(true);
             $contactSubmission->addAttachment($attachment);
             $this->entityManager->persist($attachment);
+
+            $attachments[] = [
+                'name' => $attachment->getName(),
+                'type' => $file->getMimeType(),
+                'content' => base64_encode(file_get_contents($fullPath)),
+            ];
         }
 
-        $email = (new Email());
+        $response = $this->mailService->sendMail([
+            "recipients" => [['email' => "contact@nimescricketclub.fr"]],
+            "body" => [
+                "html" => sprintf(
+                    "<p>Email: <a href='mailto:%s'>%s</a></p><br><p>%s</p>",
+                    $contactSubmission->getEmail(),
+                    $contactSubmission->getEmail(),
+                    $contactSubmission->getContent()
+                ),
+            ],
+            "subject" => "Message de " . $contactSubmission->getName() . " via le formulaire de contact",
+            "from_name" => $contactSubmission->getName(),
+            "attachments" => $attachments
+        ]);
 
-        $email
-            ->from(new Address('contact@nimescricketclub.fr', $contactSubmission->getName()))
-            ->subject('Message de ' . $contactSubmission->getName() . ' via le formulaire de contact')
-            ->to('contact@nimescricketclub.fr')
-            ->text('Email: ' . $contactSubmission->getEmail() . "\n\n" . $contactSubmission->getContent());
-
-        foreach ($contactSubmission->getAttachments() as $attachment) {
-            $path = $this->attachmentsPath . '/' . $attachment->getPath();
-            $email->addPart(new DataPart(new File($path), $attachment->getName()));
-        }
-
-        try {
-            $this->mailer->send($email);
+        if ($response->getStatusCode() === 200) {
             $this->entityManager->persist($contactSubmission);
             $this->entityManager->flush();
-        } catch (TransportExceptionInterface $e) {
+        } else {
             foreach ($contactSubmission->getAttachments() as $attachment) {
                 $path = $this->attachmentsPath . '/' . $attachment->getPath();
                 $this->filesystem->remove($path);
             }
-            throw $e;
+            throw new Exception("Erreur lors de l'envoi du message: " . $response->getStatusCode());
         }
     }
 

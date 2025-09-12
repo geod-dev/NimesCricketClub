@@ -1,5 +1,5 @@
 .marquee {
-	@apply relative h-28 flex overflow-x-hidden select-none gap-8 bg-background-darker;
+	@apply relative h-28 flex overflow-x-hidden select-none gap-8;
 
 	> * {
 		@apply flex-shrink-0 flex-around gap-8 min-w-full;

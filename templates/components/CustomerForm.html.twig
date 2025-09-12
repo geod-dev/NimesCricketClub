@@ -1,0 +1,122 @@
+<div class="page flex-center bg-gray-100 border-b border-gray-300 px-4" {{ attributes }}>
+	<form class="w-full md:w-2/3 xl:w-1/2 flex-center flex-col py-4" id="form_{{ form.id }}" method="post"
+	      action="{{ path('app_form_submit', {slug: form.slug}) }}">
+		<input type="hidden" name="data" id="data" value="{{ data|json_encode }}">
+		<div class="w-full rounded-xl shadow bg-white flex justify-between mb-3">
+			<div class="p-6 space-y-2">
+				<h1 class="text-3xl font-semibold">{{ form.title(app.locale) }}</h1>
+				<p class="post-content">{{ form.content(app.locale)|raw }}</p>
+			</div>
+			<img src="{{ asset('images/lines.png') }}" alt="" class="h-28">
+		</div>
+		<div class="w-full p-6 rounded-xl shadow bg-white form-row space-y-6 mb-3">
+			<div class="flex-between gap-6">
+				<div class="w-full">
+					<label class="font-semibold text-lg" for="first_name">
+						{{ 'input.first_name'|trans }}
+						<span class="text-red-600 -ml-px">*</span>
+					</label>
+					<input type="text" name="first_name" id="first_name" required autocomplete="first_name"
+					       autofocus data-model="first_name">
+				</div>
+				<div class="w-full">
+					<label class="font-semibold text-lg" for="last_name">
+						{{ 'input.last_name'|trans }}
+						<span class="text-red-600 -ml-px">*</span>
+					</label>
+					<input type="text" name="last_name" id="last_name" required autocomplete="last_name" autofocus
+					       data-model="last_name">
+				</div>
+			</div>
+			<div class="w-full">
+				<label class="font-semibold text-lg" for="email">
+					{{ 'input.email'|trans }}
+					<span class="text-red-600 -ml-px">*</span>
+				</label>
+				<input type="email" name="email" id="email" required autocomplete="email" autofocus data-model="email">
+			</div>
+			<div class="w-full">
+				<label class="font-semibold text-lg" for="phone">
+					{{ 'input.phone'|trans }}
+					<span class="text-red-600 -ml-px">*</span>
+				</label>
+				<input type="text" name="phone" id="phone" required autocomplete="phone" autofocus data-model="phone">
+			</div>
+		</div>
+		{% if data|length %}
+			{% for i in range(0, data|length - 1) %}
+				{% if form.repeatable %}
+					<div class="w-full flex-between mt-1 p-1">
+						<p class="font-light space-x-0.5">
+							<span class="text-xl font-semibold">{{ form.entityName(app.locale) }}</span>
+							<span>#{{ i + 1 }}</span>
+						</p>
+						{% if data|length > 1 %}
+							<button type="button" class="w-5" {{ live_action('removeEntry', {'index': i}) }}>
+								{{ source('trash.svg') }}
+							</button>
+						{% endif %}
+					</div>
+				{% endif %}
+				{% for field in form.fields %}
+					<div class="w-full p-6 rounded-xl shadow bg-white form-row mb-3">
+						<label class="font-semibold text-lg" for="{{ field.reference }}">
+							{{ field.name(app.locale) }}
+							<span class="text-red-600 -ml-px">{{ field.required ? '*' : '' }}</span>
+						</label>
+						{% if field.type.inputType == 'checkbox' %}
+							<div class="flex-center gap-2">
+								<label class="block w-full p-4 border rounded-lg cursor-pointer hover:border-primary [&:has(input:checked)]:border-primary [&:has(input:checked)]:bg-primary/10">
+									<input type="radio" value="yes" class="hidden" checked
+									       data-model="data.{{ i }}.{{ field.reference }}">
+									<span>{{ 'yes'|trans }}</span>
+								</label>
+								<label class="block w-full p-4 border rounded-lg cursor-pointer hover:border-primary [&:has(input:checked)]:border-primary [&:has(input:checked)]:bg-primary/10">
+									<input type="radio" value="no" class="hidden"
+									       data-model="data.{{ i }}.{{ field.reference }}">
+									<span>{{ 'no'|trans }}</span>
+								</label>
+							</div>
+						{% elseif field.type.inputType == 'textarea' %}
+							<textarea data-model="data.{{ i }}.{{ field.reference }}"
+							          id="{{ field.reference }}" {{ field.required ? 'required' : '' }}></textarea>
+						{% elseif field.type.inputType == 'number' %}
+							<input type="number" {{ field.required ? 'required' : '' }}
+							       id="{{ field.reference }}" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+							       placeholder="{{ 'number'|trans }}" data-model="data.{{ i }}.{{ field.reference }}">
+						{% else %}
+							<input type="{{ field.type.inputType }}" {{ field.required ? 'required' : '' }}
+							       id="{{ field.reference }}" placeholder="{{ field.name(app.locale) }}"
+							       data-model="data.{{ i }}.{{ field.reference }}">
+						{% endif %}
+					</div>
+				{% endfor %}
+			{% endfor %}
+		{% endif %}
+		{% if this.price %}
+			<div class="flex w-full my-3">
+				<div class="text-3xl font-bold">
+					{{ 'price'|trans }}: {{ this.price }}
+				</div>
+			</div>
+			<div class="w-full flex-center gap-2 mb-3">
+				<label class="block w-full p-4 border border-gray-500/40 rounded-lg cursor-pointer hover:border-primary [&:has(input:checked)]:border-primary [&:has(input:checked)]:bg-primary/10">
+					<input type="radio" name="payment_type" value="online" class="hidden" checked>
+					<span>{{ 'payment_type.online'|trans }}</span>
+				</label>
+				<label class="block w-full p-4 border border-gray-500/40 rounded-lg cursor-pointer hover:border-primary [&:has(input:checked)]:border-primary [&:has(input:checked)]:bg-primary/10">
+					<input type="radio" name="payment_type" value="onsite" class="hidden">
+					<span>{{ 'payment_type.onsite'|trans }}</span>
+				</label>
+			</div>
+		{% endif %}
+		<div class="flex justify-end w-full gap-2 mb-3">
+			{% if form.repeatable %}
+				<button class="button-gray" type="button" {{ live_action('addEntry') }}>
+					{{ 'form.add_entity'|trans({'%entity%': form.entityName(app.locale)}) }}
+				</button>
+			{% endif %}
+			<button class="button-primary">{{ 'form.submit'|trans }}</button>
+		</div>
+	</form>
+</div>

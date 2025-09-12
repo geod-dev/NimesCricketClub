@@ -1,8 +1,8 @@
 .form-row {
-	@apply mb-5 w-full;
+	@apply w-full;
 
 	label {
-		@apply block mb-2 text-sm font-medium;
+		@apply block mb-2 font-semibold;
 	}
 
 	input, textarea {

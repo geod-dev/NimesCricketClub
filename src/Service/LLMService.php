@@ -2,16 +2,15 @@
 
 namespace App\Service;
 
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class LLMService
 {
     public function __construct(
-        private readonly HttpClientInterface                              $httpClient,
-        #[Autowire(param: 'ai_endpoint.uri')] private readonly string     $aiEndpointUri,
-        #[Autowire(param: 'ai_endpoint.api_key')] private readonly string $aiEndpointApiKey,
-        #[Autowire(param: 'ai_endpoint.model')] private readonly string   $aiEndpointModel
+        private readonly HttpClientInterface $httpClient,
+        private readonly string              $aiEndpointUri,
+        private readonly string              $aiEndpointApiKey,
+        private readonly string              $aiEndpointModel
     )
     {
     }

@@ -7,7 +7,7 @@ use App\Entity\Interface\TranslatableInterface;
 class TranslationService
 {
     const SIMPLE_TRANSLATE_PROMPT = "Translate user input from French to English.
-    Do not add anything around that translation.";
+    Do not add anything around that translation. Do not add or remove any explanations or punctuation.";
     const HTML_TRANSLATE_PROMPT = "Translate HTML user input from French to English.
     Do not add anything around that translation. Translate only inner text.
     Do not translate tags, tags attributes names or values. Do not modify tags organization and overall architecture.";

@@ -17,4 +17,14 @@
             </div>
         </div>
     </div>
+
+	{% if post.links|length > 0 %}
+		<div class="w-full fixed bottom-0 flex-center">
+			<div class="flex bg-background p-2 pb-1.5 gap-2 rounded-t-xl items-end">
+				{% for link in post.links %}
+					<a class="button-primary" href="{{ link.url }}">{{ link.title }}</a>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}

@@ -1,0 +1,49 @@
+{% extends "@EasyAdmin/crud/detail.html.twig" %}
+
+{% set entry = entity.instance %}
+
+{% block main %}
+	<div class="field-group">
+		<div class="field-label">Form</div>
+		<div class="field-value">
+			<a href="{{ ea_url()
+				.setController('App\\Controller\\Admin\\CustomerFormCrudController')
+				.setAction('detail')
+				.setEntityId(entry.form.id) }}">
+				{{ entry.form.title(app.locale) }}
+			</a>
+		</div>
+	</div>
+
+	{% for key in ['email', 'first_name', 'last_name', 'phone'] %}
+		<div class="field-group">
+			<div class="field-label">{{ ('input.' ~ key)|trans }}</div>
+			<div class="field-value">{{ attribute(entry, key|replace({'_n': 'N'})) }}</div>
+		</div>
+	{% endfor %}
+	<div class="field-group">
+		<div class="field-label">{{ ('price')|trans }}</div>
+		<div class="field-value">{{ entry.price|number_format(2, ',', ' ') ~ ' €' }}</div>
+	</div>
+	<div class="field-group">
+		<div class="field-label">{{ ('input.paid')|trans }}</div>
+		<div class="field-value">{{ (entry.paid ? 'yes' : 'no')|trans }}</div>
+	</div>
+
+	{% for i in range(0, entry.data|length - 1) %}
+		{% set data = entry.data[i] %}
+		<div class="field-group" style="margin-top: 2rem">
+			<div class="field-label" style="font-size: 1rem">
+				{{ entry.form.entityName(app.locale) }} #{{ i }}
+			</div>
+		</div>
+		{% for key, value in data %}
+			{% set field = entry.form.fields|find(f => f.reference == key) %}
+			{% set fieldName = field ? field.name(app.locale) : key|title %}
+			<div class="field-group">
+				<div class="field-label">{{ fieldName }}</div>
+				<div class="field-value">{{ value }}</div>
+			</div>
+		{% endfor %}
+	{% endfor %}
+{% endblock %}

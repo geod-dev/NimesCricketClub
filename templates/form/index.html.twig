@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire: {{ form.title(app.locale) }}{% endblock %}
+
+{% block body %}
+	{{ component('CustomerForm', {form: form}) }}
+{% endblock %}

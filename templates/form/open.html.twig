@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Form Checkout Pending{% endblock %}
+
+{% block body %}
+	<div class="page-center gap-4">
+		<div class="w-24 h-24 opacity-75">
+			{{ source('clock.svg') }}
+		</div>
+		<div class="text-xl bg-gray-300 rounded px-3 py-2">
+			{{ entry.price|number_format(2, ',', ' ') ~ ' €' }}
+		</div>
+		<div class="text-center">
+			<h1 class="text-2xl font-semibold">{{ 'form_checkout.pending.title'|trans }}</h1>
+			<p>{{ 'form_checkout.pending.description'|trans|raw }}</p>
+		</div>
+		<a class="button-primary flex-center gap-2.5" href="{{ completionUrl }}">
+			<span class="w-5 h-5">{{ source('shopping-cart.svg') }}</span>
+			{{ 'form_checkout.pending.cta'|trans }}
+		</a>
+	</div>
+{% endblock %}

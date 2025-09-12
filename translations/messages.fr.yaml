@@ -49,3 +49,45 @@ discover:
     essaye de marquer des points et possède simultanément deux batteurs sur le terrain, chacun devant l’un des guichets.
     Un point est notamment marqué à chaque échange de position de ces deux joueurs lorsque la balle est en jeu."
     video_suggestion: "Pour encore mieux comprendre le cricket : regardez la vidéo !"
+
+number: "Numéro"
+yes: "Oui"
+no: "Non"
+price: "Prix"
+
+form:
+    add_entity: "Ajouter '%entity%'"
+    submit: "Envoyer"
+    subscribe: "S'abonner"
+
+input:
+    email: "Adresse Email"
+    first_name: "Prénom"
+    last_name: "Nom de Famille"
+    phone: "Numéro de Téléphone"
+    paid: "Payé"
+
+alert:
+    form_submission:
+        success: "Merci pour votre soumission !"
+
+payment_type:
+    online: "Payez en ligne"
+    onsite: "Payez sur place"
+
+form_checkout:
+    pending:
+        title: 'Paiement en cours...'
+        description: 'Cliquez sur le bouton ci-dessous pour reprendre le paiement<br>ou ignorez ce message pour payer sur place.'
+        cta: 'Continuer le paiement'
+    complete:
+        title: "Merci pour votre paiement !"
+        description: "Vous recevrez un email quand votre paiement de %price% sera traité."
+        cta: "Retour à l'accueil"
+    expired:
+        message: "Le paiement à expiré, vous devrez payer sur place."
+
+newsletter:
+    unsubscribed: "Vous avez bien été désinscrit de notre newsletter."
+    subscribed: "Merci de vous être inscrit à notre newsletter."
+    subscribe: "S'abonner à notre Newsletter"

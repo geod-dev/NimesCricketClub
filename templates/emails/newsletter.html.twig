@@ -1,0 +1,93 @@
+{% apply inline_css %}
+
+	{% include "emails/header.html.twig" %}
+
+	<a class="container" href="{{ absolute_url(path('app_news_post', {slug: news.slug})) }}">
+		<h1>{{ news.titleFr }}</h1>
+		<img class="head-img" src="{{ absolute_url(asset(news.imagePath)|imagine_filter("full")) }}" alt="">
+		<div class="buttons">
+			<div class="button button-black">Lire l'actu</div>
+			{% for link in news.links %}
+				<a class="button button-primary" href="{{ link.url }}">{{ link.title }}</a>
+			{% endfor %}
+		</div>
+	</a>
+
+	{% verbatim %}
+	<!--suppress HtmlUnknownTarget -->
+	<div class="footer">
+		<small>
+			Cet email vous est envoyé par l'association Nîmes Cricket Club suite à la publication d'un nouvel article.
+			Pour vous désinscrire, <a href="{{UnsubscribeUrl}}">cliquez ici</a>.
+		</small>
+	</div>
+	{% endverbatim %}
+
+	<style>
+        .footer {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer, .footer a {
+            text-align: center;
+            color: #5d5d5d;
+        }
+	</style>
+
+	<style>
+        .container {
+            color: black;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .head-img {
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            display: block;
+            padding: 1rem 2.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bolder;
+            font-size: 0.9rem;
+            border-radius: 0.25rem;
+        }
+
+        .button-black {
+            background: black;
+            border: 2px solid black;
+        }
+
+        .button-primary {
+            background: #007B45;
+            border: 2px solid #007B45;
+        }
+	</style>
+{% endapply %}
+

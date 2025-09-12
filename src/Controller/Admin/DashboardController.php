@@ -5,7 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Activity;
 use App\Entity\Competition;
 use App\Entity\ContactSubmission;
+use App\Entity\CustomerForm;
+use App\Entity\CustomerFormEntry;
 use App\Entity\News;
+use App\Entity\NewsletterSubscriber;
 use App\Entity\Partner;
 use App\Entity\Player;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -20,7 +23,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-         return $this->render('admin/index.html.twig');
+        return $this->render('admin/index.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -41,7 +44,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Partners', 'fa fa-handshake', Partner::class);
         yield MenuItem::linkToCrud('Activities', 'fa fa-bolt-lightning', Activity::class);
         yield MenuItem::linkToCrud('Competitions', 'fa fa-baseball-bat-ball', Competition::class);
-        yield MenuItem::linkToCrud('Contacts', 'fa fa-users', ContactSubmission::class);
+        yield MenuItem::linkToCrud('Subscribers', 'fa fa-envelope-open-text', NewsletterSubscriber::class);
+        yield MenuItem::linkToCrud('Contacts', 'fa fa-address-book', ContactSubmission::class);
+        yield MenuItem::linkToCrud('Forms', 'fa fa-rectangle-list', CustomerForm::class)->setController(CustomerFormCrudController::class);
+        yield MenuItem::linkToCrud('Submissions', 'fa fa-align-left', CustomerFormEntry::class)->setController(CustomerFormEntryCrudController::class);
     }
 
     public function configureAssets(): Assets

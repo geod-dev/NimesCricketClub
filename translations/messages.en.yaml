@@ -47,3 +47,45 @@ discover:
     <br>A cricket match is divided into several innings. During each of them, one of the teams tries to score points and has two batters on the field simultaneously, each in front of one of the wickets.
     <br>A point is scored, among other ways, each time these two players exchange positions when the ball is in play."
     video_suggestion: "To better understand cricket: watch the video!"
+
+number: "Number"
+yes: "Yes"
+no: "No"
+price: "Price"
+
+form:
+    add_entity: "Add '%entity%'"
+    submit: "Submit"
+    subscribe: "Subscribe"
+
+input:
+    email: "Email Address"
+    first_name: "First Name"
+    last_name: "Last Name"
+    phone: "Phone Number"
+    paid: "Paid"
+
+alert:
+    form_submission:
+        success: "Thank you for your submission!"
+
+payment_type:
+    online: "Pay online"
+    onsite: "Pay on site"
+
+form_checkout:
+    pending:
+        title: "Form checkout pending..."
+        description: "Please click the button below to continue checkout<br>or ignore this message to pay on site."
+        cta: "Continue Checkout"
+    complete:
+        title: "Thank you for your payment!"
+        description: "You will receive an email when your %price% payment has been processed."
+        cta: "Back to Home"
+    expired:
+        message: "Your payment has expired, you will have to pay on site."
+
+newsletter:
+    unsubscribed: "You have been unsubscribed from our newsletter."
+    subscribed: "Thank you for subscribing to our newsletter."
+    subscribe: "Subscribe to our Newsletter"

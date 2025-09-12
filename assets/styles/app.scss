@@ -20,6 +20,10 @@
 	.page {
 		@apply box py-14
 	}
+
+	.page-center {
+		@apply page pt-[10vh] flex-start flex-col;
+	}
 }
 
 .home > div {
