@@ -1,6 +1,7 @@
 parameters:
     attachments_path: "%kernel.project_dir%/data/attachments"
     stripe_webhook_secret: "%env(STRIPE_WEBHOOK_SECRET)%"
+    unione_api_key: "%env(UNIONE_API_KEY)%"
 
 services:
     _defaults:
@@ -12,7 +13,7 @@ services:
             $aiEndpointApiKey: "%env(AI_ENDPOINT_API_KEY)%"
             $aiEndpointModel: "%env(AI_ENDPOINT_MODEL)%"
             $stripeSecretKey: "%env(STRIPE_SECRET_KEY)%"
-            $unioneApiKey: "%env(UNIONE_API_KEY)%"
+            $unioneApiKey: "%unione_api_key%"
 
     App\:
         resource: '../src/'
