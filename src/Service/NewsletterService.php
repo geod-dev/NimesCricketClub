@@ -70,4 +70,29 @@ class NewsletterService
         }
         $this->entityManager->flush();
     }
+
+    public function sendCustomNewsletter(string $subject, string $content): void
+    {
+        $subscribers = $this->newsletterSubscriberRepository->findBy(['isSubscribed' => true]);
+        if (count($subscribers) === 0) {
+            return; // nothing to send
+        }
+
+        $recipients = [];
+        foreach ($subscribers as $subscriber) {
+            $recipients[] = ["email" => $subscriber->getEmail()];
+        }
+
+        $this->mailService->sendMail([
+            "recipients" => $recipients,
+            "body" => [
+                "html" => $this->twig->render('emails/newsletter_custom.html.twig', [
+                    'subject' => $subject,
+                    'content' => $content,
+                ]),
+            ],
+            "subject" => $subject . " - Nîmes Cricket Club",
+            "from_name" => "Nîmes Cricket Club - Newsletter"
+        ]);
+    }
 }

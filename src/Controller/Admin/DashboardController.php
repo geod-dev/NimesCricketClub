@@ -8,6 +8,7 @@ use App\Entity\ContactSubmission;
 use App\Entity\CustomerForm;
 use App\Entity\CustomerFormEntry;
 use App\Entity\News;
+use App\Entity\NewsletterEmail;
 use App\Entity\NewsletterSubscriber;
 use App\Entity\Partner;
 use App\Entity\Player;
@@ -48,6 +49,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Contacts', 'fa fa-address-book', ContactSubmission::class);
         yield MenuItem::linkToCrud('Forms', 'fa fa-rectangle-list', CustomerForm::class)->setController(CustomerFormCrudController::class);
         yield MenuItem::linkToCrud('Submissions', 'fa fa-align-left', CustomerFormEntry::class)->setController(CustomerFormEntryCrudController::class);
+        yield MenuItem::linkToCrud('Newsletter Emails', 'fa fa-paper-plane', NewsletterEmail::class)->setController(NewsletterEmailCrudController::class);
     }
 
     public function configureAssets(): Assets

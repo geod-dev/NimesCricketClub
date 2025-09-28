@@ -1,0 +1,58 @@
+{% apply inline_css %}
+
+	{% include "emails/header.html.twig" %}
+
+	<div class="container">
+		<h1 class="title">{{ subject }}</h1>
+		<div class="content">{{ content|raw }}</div>
+	</div>
+
+	{% verbatim %}
+	<!--suppress HtmlUnknownTarget -->
+	<div class="footer">
+		<small>
+			Cet email vous est envoyé par l'association Nîmes Cricket Club.
+			Pour vous désinscrire, <a href="{{UnsubscribeUrl}}">cliquez ici</a>.
+		</small>
+	</div>
+	{% endverbatim %}
+
+	<style>
+        .footer {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer, .footer a {
+            text-align: center;
+            color: #5d5d5d;
+        }
+	</style>
+
+	<style>
+        .container {
+            color: black;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .container > h1.title {
+            font-size: 2rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container > .content {
+            line-height: 1.6;
+        }
+	</style>
+{% endapply %}
