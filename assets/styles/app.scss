@@ -1,17 +1,18 @@
+@use "sass:meta";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "flex";
-@import "font/font";
+@include meta.load-css("flex");
+@include meta.load-css("font/font");
 
-@import "button";
-@import "form";
-@import "alert";
-@import "modal";
+@include meta.load-css("button");
+@include meta.load-css("form");
+@include meta.load-css("alert");
+@include meta.load-css("modal");
 
-@import "marquee";
-@import "post";
+@include meta.load-css("marquee");
+@include meta.load-css("post");
 
 @layer base {
 	.box {
