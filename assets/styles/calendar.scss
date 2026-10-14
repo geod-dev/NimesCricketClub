@@ -1,0 +1,77 @@
+.event-calendar {
+	--fc-border-color: #eaebea;
+	--fc-button-bg-color: #007B45;
+	--fc-button-border-color: #007B45;
+	--fc-button-hover-bg-color: #006945;
+	--fc-button-hover-border-color: #006945;
+	--fc-button-active-bg-color: #005843;
+	--fc-button-active-border-color: #005843;
+	--fc-today-bg-color: #f0f8f3;
+	--fc-neutral-bg-color: #f0f2f1;
+	--fc-page-bg-color: #fff;
+
+	.fc-toolbar-title {
+		@apply text-xl sm:text-2xl font-bold;
+	}
+
+	.fc-button {
+		@apply rounded font-medium shadow-none;
+	}
+
+	.fc-col-header-cell-cushion {
+		@apply py-3 text-foreground-light font-semibold;
+	}
+
+	.fc-event {
+		@apply cursor-pointer rounded;
+	}
+
+	.fc-daygrid-event {
+		@apply px-2 py-1;
+	}
+
+	.fc-event-title {
+		@apply font-semibold;
+	}
+
+	.fc-daygrid-event .fc-event-title {
+		white-space: normal;
+	}
+
+	.fc-event:focus-visible {
+		@apply outline outline-2 outline-offset-2 outline-primary;
+	}
+
+	@media (max-width: 639px) {
+		.fc-header-toolbar {
+			@apply flex-wrap gap-4;
+		}
+
+		.fc-toolbar-chunk:nth-child(2) {
+			@apply order-first w-full;
+		}
+
+		.fc-button {
+			@apply text-sm;
+		}
+
+		.fc-list-event-time {
+			white-space: normal;
+		}
+	}
+}
+
+.event-modal {
+	width: min(42rem, calc(100% - 2rem));
+	max-height: calc(100dvh - 3rem);
+	margin: auto;
+
+	&::backdrop {
+		background: rgb(15 21 18 / 55%);
+		backdrop-filter: blur(3px);
+	}
+}
+
+body:has(.event-modal[open]) {
+	overflow: hidden;
+}

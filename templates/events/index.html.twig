@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "events.label"|trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}
+
+{% block body %}
+    <div class="page">
+        <twig:Heading title="{{ "events.label"|trans }}"/>
+        <p class="text-foreground-light mb-8">{{ "events.description"|trans }}</p>
+
+        {% set calendarEvents = [] %}
+        {% for event in events %}
+            {% set calendarEvents = calendarEvents|merge([{
+                id: event.id,
+                title: event.title,
+                start: event.startAt|date('Y-m-d\\TH:i:s'),
+                end: event.endAt|date('Y-m-d\\TH:i:s'),
+                color: event.color
+            }]) %}
+
+            <template id="event-description-{{ event.id }}">
+                <div class="post-content">{{ event.description|raw }}</div>
+                {% if event.relatedNews and event.relatedNews.slug %}
+                    <a class="button-primary inline-block mt-6" href="{{ path('app_news_post', {slug: event.relatedNews.slug}) }}">{{ "events.read_more"|trans }}</a>
+                {% endif %}
+            </template>
+        {% endfor %}
+
+        <div class="event-calendar rounded-xl border border-divider p-3 sm:p-6 shadow-sm"
+             data-events="{{ calendarEvents|json_encode|e('html_attr') }}"
+             data-locale="{{ app.locale }}"
+             data-empty="{{ "events.empty"|trans }}"></div>
+
+        <dialog id="event-modal" class="event-modal rounded-xl bg-background p-6 sm:p-8 text-foreground shadow-xl" aria-labelledby="event-title">
+            <div class="flex items-start justify-between gap-6 mb-3">
+                <h2 id="event-title" class="text-2xl sm:text-3xl font-bold break-words"></h2>
+                <button type="button" class="event-close rounded p-2 hover:bg-background-dark shrink-0" aria-label="{{ "events.close"|trans }}" autofocus>
+                    <span aria-hidden="true">✕</span>
+                </button>
+            </div>
+            <p class="event-date text-foreground-light mb-6"></p>
+            <div class="event-description"></div>
+        </dialog>
+    </div>
+{% endblock %}

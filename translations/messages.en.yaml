@@ -1,6 +1,7 @@
 nav:
     app_home: "Home"
     app_news: "News"
+    app_events: "Events"
     app_team: "Team"
     app_competition: "Competitions"
     app_about: "About Us"
@@ -89,3 +90,10 @@ newsletter:
     unsubscribed: "You have been unsubscribed from our newsletter."
     subscribed: "Thank you for subscribing to our newsletter."
     subscribe: "Subscribe to our Newsletter"
+
+events:
+    label: "Events"
+    description: "Explore the club’s upcoming events."
+    read_more: "Read more"
+    close: "Close"
+    empty: "No events scheduled for this period."

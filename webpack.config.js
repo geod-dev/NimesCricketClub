@@ -21,6 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('calendar', './assets/js/calendar.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -59,7 +60,9 @@ Encore
     .enablePostCssLoader()
 
     // enables Sass/SCSS support
-    .enableSassLoader()
+    .enableSassLoader(options => {
+        options.api = 'modern';
+    })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

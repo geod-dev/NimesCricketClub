@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activity;
+use App\Entity\CalendarEvent;
 use App\Entity\Competition;
 use App\Entity\ContactSubmission;
 use App\Entity\CustomerForm;
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToRoute('Back to Website', 'fa fa-caret-left', "app_home");
         yield MenuItem::section('Modules');
+        yield MenuItem::linkToCrud('Events', 'fa fa-calendar-days', CalendarEvent::class);
         yield MenuItem::linkToCrud('News', 'fa fa-newspaper', News::class);
         yield MenuItem::linkToCrud('Players', 'fa fa-shirt', Player::class);
         yield MenuItem::linkToCrud('Partners', 'fa fa-handshake', Partner::class);
