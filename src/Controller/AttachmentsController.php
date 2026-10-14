@@ -25,6 +25,7 @@ class AttachmentsController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $file = $request->files->get('file');
         $name = $request->request->get('name');
 
@@ -81,6 +82,7 @@ class AttachmentsController extends AbstractController
         $filesystem->remove($path);
 
         $entityManager->remove($attachment);
+        $entityManager->flush();
         return new Response("done");
     }
 }

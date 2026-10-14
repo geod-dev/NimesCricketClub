@@ -14,13 +14,17 @@ class NewsController extends AbstractController
     public function index(NewsRepository $repository): Response
     {
         return $this->render('news/index.html.twig', [
-            'news' => $repository->findBy([], ['createdAt' => 'DESC']),
+            'news' => $repository->findBy(['isPublished' => true], ['createdAt' => 'DESC']),
         ]);
     }
 
     #[Route('/actus/{slug}', name: 'app_news_post')]
     public function news(News $post): Response
     {
+        if (!$post->isPublished()) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('news/post.html.twig', [
             'post' => $post,
         ]);

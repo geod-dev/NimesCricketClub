@@ -16,7 +16,9 @@ class NewsletterSubscriberCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('email', 'Email');
-        yield BooleanField::new('isSubscribed', 'Is Subscribed');
+        return [
+            TextField::new('email', 'Email'),
+            BooleanField::new('isSubscribed', 'Is Subscribed')
+        ];
     }
 }

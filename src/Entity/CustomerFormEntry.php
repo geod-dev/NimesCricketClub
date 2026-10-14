@@ -23,6 +23,9 @@ class CustomerFormEntry extends AbstractUid
     #[ORM\Column]
     private bool $isPaid = false;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $paymentConfirmationSentAt = null;
+
     #[ORM\Column]
     private ?float $price = null;
 
@@ -78,6 +81,18 @@ class CustomerFormEntry extends AbstractUid
     public function setIsPaid(bool $isPaid): static
     {
         $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getPaymentConfirmationSentAt(): ?\DateTimeImmutable
+    {
+        return $this->paymentConfirmationSentAt;
+    }
+
+    public function setPaymentConfirmationSentAt(\DateTimeImmutable $sentAt): static
+    {
+        $this->paymentConfirmationSentAt = $sentAt;
 
         return $this;
     }

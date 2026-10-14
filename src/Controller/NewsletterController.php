@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\NewsletterSubscriber;
 use App\Service\NewsletterService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +25,19 @@ final class NewsletterController extends AbstractController
         if (!$email) throw new BadRequestHttpException('email is required');
         $newsletterService->subscribeEmail($email);
         $this->addFlash('success', $translator->trans('newsletter.subscribed'));
+        return $this->redirectToRoute('app_home');
+    }
+
+    #[Route('/newsletter/unsubscribe/{unsubscribeToken}', name: 'app_newsletter_unsubscribe')]
+    public function unsubscribe(
+        TranslatorInterface    $translator,
+        NewsletterSubscriber   $subscriber,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $subscriber->setIsSubscribed(false);
+        $entityManager->flush();
+        $this->addFlash('success', $translator->trans('newsletter.unsubscribed'));
         return $this->redirectToRoute('app_home');
     }
 }

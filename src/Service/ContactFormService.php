@@ -6,7 +6,7 @@ use App\Entity\Attachment;
 use App\Entity\ContactSubmission;
 use App\Exception\SpamDetectedException;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
+use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Uid\Uuid;
@@ -52,35 +52,33 @@ class ContactFormService
             $attachments[] = [
                 'name' => $attachment->getName(),
                 'type' => $file->getMimeType(),
-                'content' => base64_encode(file_get_contents($fullPath)),
+                'content' => $file->getContent(),
             ];
         }
 
-        $response = $this->mailService->sendMail([
-            "recipients" => [['email' => "contact@nimescricketclub.fr"]],
-            "body" => [
-                "html" => sprintf(
+        try {
+            $this->mailService->sendMessage(
+                'contact@nimescricketclub.fr',
+                $contactSubmission->getName(),
+                'Message de ' . $contactSubmission->getName() . ' via le formulaire de contact',
+                sprintf(
                     "<p>Email: <a href='mailto:%s'>%s</a></p><br><p>%s</p>",
-                    $contactSubmission->getEmail(),
-                    $contactSubmission->getEmail(),
-                    $contactSubmission->getContent()
+                    htmlspecialchars($contactSubmission->getEmail(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+                    htmlspecialchars($contactSubmission->getEmail(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+                    nl2br(htmlspecialchars($contactSubmission->getContent(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))
                 ),
-            ],
-            "subject" => "Message de " . $contactSubmission->getName() . " via le formulaire de contact",
-            "from_name" => $contactSubmission->getName(),
-            "attachments" => $attachments
-        ]);
-
-        if ($response->getStatusCode() === 200) {
-            $this->entityManager->persist($contactSubmission);
-            $this->entityManager->flush();
-        } else {
+                $attachments
+            );
+        } catch (RuntimeException $e) {
             foreach ($contactSubmission->getAttachments() as $attachment) {
                 $path = $this->attachmentsPath . '/' . $attachment->getPath();
                 $this->filesystem->remove($path);
             }
-            throw new Exception("Erreur lors de l'envoi du message: " . $response->getStatusCode());
+            throw $e;
         }
+
+        $this->entityManager->persist($contactSubmission);
+        $this->entityManager->flush();
     }
 
     private function detectSpam(ContactSubmission $contactSubmission): bool

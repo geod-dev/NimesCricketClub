@@ -45,7 +45,7 @@ class NewsletterEmailCrudController extends AbstractCrudController
         parent::persistEntity($entityManager, $entityInstance);
 
         // After persisting, send the newsletter to all subscribers
-        $this->newsletterService->sendCustomNewsletter($entityInstance->getSubject(), $entityInstance->getContent());
+        $this->newsletterService->sendCustomNewsletter($entityInstance);
 
         $this->addFlash('success', 'Newsletter sent to all active subscribers.');
     }

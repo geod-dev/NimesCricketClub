@@ -9,7 +9,7 @@ use App\Service\ContactFormService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use RuntimeException;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ContactController extends AbstractController
@@ -30,7 +30,7 @@ class ContactController extends AbstractController
             try {
                 $contactFormService->handleFormSubmission($form, $contactSubmission);
                 $this->addFlash('success', 'Votre message a été envoyé !');
-            } catch (TransportExceptionInterface) {
+            } catch (RuntimeException) {
                 $this->addFlash('error', 'Erreur lors de l\'envoi de votre message !');
             } catch (SpamDetectedException) {
                 $this->addFlash('error', 'Ce mail a été détecté comme spam !');

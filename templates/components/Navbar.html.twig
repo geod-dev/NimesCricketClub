@@ -32,7 +32,7 @@
                 {% endfor %}
                 <button class="button-primary w-full lg:hidden modal-toggle" data-for="join-us-modal">Nous Rejoindre</button>
                 {% if is_granted("ROLE_ADMIN") %}
-                    <a class="button-gray w-full lg:hidden" href="{{ path('app_admin') }}">Admin</a>
+                    <a class="button-gray w-full lg:hidden" href="{{ path('admin') }}">Admin</a>
                 {% endif %}
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="flex-center gap-2">
                 <button class="button-primary modal-toggle" data-for="join-us-modal">{{ "nav.join_us.label"|trans }}</button>
                 {% if is_granted("ROLE_ADMIN") %}
-                    <a class="button-gray button-icon" href="{{ path('app_admin') }}">
+                    <a class="button-gray button-icon" href="{{ path('admin') }}">
                         <span class="block h-5 w-5">
                             {{ source('gear.svg') }}
                         </span>

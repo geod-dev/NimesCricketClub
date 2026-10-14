@@ -55,7 +55,7 @@ class SitemapController extends AbstractController
             ];
         }
 
-        foreach ($newsRepository->findAll() as $news) {
+        foreach ($newsRepository->findBy(['isPublished' => true]) as $news) {
             $urls[] = [
                 'loc' => $this->generateUrl('app_news_post', ['slug' => $news->getSlug()]),
                 'lastmod' => $news->getUpdatedAt()->format('Y-m-d'),
